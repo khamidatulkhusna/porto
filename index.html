@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Website Portofolio Pribadi - Menampilkan profil, riwayat pendidikan, pengalaman kerja/organisasi, dan katalog proyek web development.">
+  <meta name="keywords" content="Portfolio, Web Developer, Frontend, HTML, CSS, JavaScript, Portofolio Pribadi">
+  <meta name="author" content="Rizky Pratama">
+  <title>Portofolio Pribadi | Web Developer</title>
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="header" id="header">
+    <div class="container navbar-container">
+      <a href="#about" class="logo">
+        <span class="logo-badge">&lt;/&gt;</span>
+        <span class="logo-text">Rizky<span>.dev</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#about" class="nav-link active">
+              <i class="fa-solid fa-user"></i> Tentang Saya
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#experience" class="nav-link">
+              <i class="fa-solid fa-graduation-cap"></i> Pendidikan & Pengalaman
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#projects" class="nav-link">
+              <i class="fa-solid fa-folder-open"></i> Proyek
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">
+              <i class="fa-solid fa-envelope"></i> Kontak
+            </a>
+          </li>
+        </ul>
+        <div class="nav-cta-mobile">
+          <a href="#contact" class="btn btn-primary btn-sm">Hubungi Saya</a>
+        </div>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="header-actions">
+        <a href="#contact" class="btn btn-primary btn-sm d-none-mobile">
+          <i class="fa-regular fa-paper-plane"></i> Hire Me
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+          <i class="fa-solid fa-bars" id="toggle-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO & ABOUT SECTION ================= -->
+    <section class="section hero-section" id="about">
+      <div class="container hero-container">*3
+        <!-- Hero Content / Te**66
+          <div class="availability-badge">
+            <span class="status-dot"></span>
+            <span>Tersedia untuk Peluang & Proyek Baru</span>
+          </div>
+
+          <h1 class="hero-title">
+            Halo, Saya <span class="text-gradient">Rizky Pratama</span>
+          </h1>
+
+          <h2 class="hero-subtitle">
+            Mahasiswa Sistem Informasi & <span>Frontend Web Developer</span>
+          </h2>
+
+          <p class="hero-bio">
+            Saya berfokus pada perancangan antarmuka website yang bersih, responsif, dan mudah digunakan. Senang
+            mengeksplorasi teknologi web modern, mengubah kebutuhan bisnis menjadi solusi digital yang terstruktur,
+            serta memiliki ketertarikan tinggi pada UI/UX Design dan Frontend Development.
+          </p>
+
+          <!-- Key Highlights / Quick Stats -->
+          <div class="quick-stats">
+            <div class="stat-card">
+              <span class="stat-number">3+</span>
+              <span class="stat-label">Tahun Belajar & Eksplorasi</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">12+</span>
+              <span class="stat-label">Proyek Selesai</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Dedikasi & Kolaborasi</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">
+              <i class="fa-solid fa-paper-plane"></i> Hubungi Saya
+            </a>
+            <a href="#projects" class="btn btn-secondary">
+              <i class="fa-solid fa-eye"></i> Lihat Karya
+            </a>
+            <a href="#" class="btn btn-outline" id="btn-cv" title="Unduh Curriculum Vitae">
+              <i class="fa-solid fa-file-arrow-down"></i> Unduh CV
+            </a>
+          </div>
+
+          <!-- Skills Badges -->
+          <div class="tech-stack-wrapper">
+            <span class="tech-stack-title">Tech Stack Utama:</span>
+            <div class="tech-tags">
+              <span class="tech-tag"><i class="fa-brands fa-html5"></i> HTML5</span>
+              <span class="tech-tag"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+              <span class="tech-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
+              <span class="tech-tag"><i class="fa-brands fa-php"></i> PHP</span>
+              <span class="tech-tag"><i class="fa-brands fa-figma"></i> Figma</span>
+              <span class="tech-tag"><i class="fa-brands fa-git-alt"></i> Git</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual / Profile Image Card -->
+        <div class="hero-visual">
+          <div class="profile-card">
+            <div class="profile-glow"></div>
+            <div class="profile-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+                alt="Foto Profil Rizky Pratama" class="profile-image" id="profile-img">
+            </div>
+
+            <!-- Floating Micro Badges -->
+            <div class="floating-badge badge-code">
+              <i class="fa-solid fa-code"></i>
+              <div>
+                <strong>Clean Code</strong>
+                <small>HTML5 & CSS3 Standard</small>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-design">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <div>
+                <strong>100% Responsif</strong>
+                <small>Semua Ukuran Layar</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= NEUBRUTALISM TICKER BANNER ================= -->
+    <div class="ticker-banner" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="ticker-item">✦ WEB DEVELOPER</span>
+        <span class="ticker-item">★ FRONTEND SPECIALIST</span>
+        <span class="ticker-item">✦ UI/UX ENTHUSIAST</span>
+        <span class="ticker-item">★ CLEAN & ACCESSIBLE CODE</span>
+        <span class="ticker-item">✦ HIGH PERFORMANCE</span>
+        <span class="ticker-item">★ 100% RESPONSIVE</span>
+        <span class="ticker-item">✦ OPEN FOR COLLABORATION</span>
+        <span class="ticker-item">★ PIXEL PERFECT</span>
+        <span class="ticker-item">✦ WEB DEVELOPER</span>
+        <span class="ticker-item">★ FRONTEND SPECIALIST</span>
+        <span class="ticker-item">✦ UI/UX ENTHUSIAST</span>
+        <span class="ticker-item">★ CLEAN & ACCESSIBLE CODE</span>
+        <span class="ticker-item">✦ HIGH PERFORMANCE</span>
+        <span class="ticker-item">★ 100% RESPONSIVE</span>
+        <span class="ticker-item">✦ OPEN FOR COLLABORATION</span>
+        <span class="ticker-item">★ PIXEL PERFECT</span>
+      </div>
+    </div>
+
+    <!-- ================= EDUCATION & EXPERIENCE SECTION ================= -->
+    <section class="section section-alt" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-briefcase"></i> Rekam Jejak</span>
+          <h2 class="section-title">Pendidikan & Pengalaman</h2>
+          <p class="section-subtitle">
+            Kombinasi latar belakang akademik di bidang teknologi dan keterlibatan aktif dalam proyek nyata serta
+            organisasi.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+
+          <!-- Column 1: Riwayat Pendidikan -->
+          <div class="timeline-column">
+            <div class="column-header">
+              <div class="column-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <h3>Riwayat Pendidikan</h3>
+            </div>
+
+            <div class="timeline">
+              <!-- Item 1 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-period">
+                    <i class="fa-regular fa-calendar"></i> 2022 - Sekarang (Aktif)
+                  </div>
+                  <h4 class="timeline-title">S1 Sistem Informasi</h4>
+                  <p class="timeline-institution">Universitas Indonesia / Institut Teknologi</p>
+                  <p class="timeline-description">
+                    Mempelajari Rekayasa Perangkat Lunak, Basis Data Relasional, Desain Interaksi Manusia & Komputer
+                    (HCI), serta Manajemen Proyek Teknologi Informasi. IPK: 3.82 / 4.00.
+                  </p>
+                  <div class="timeline-tags">
+                    <span>Web Development</span>
+                    <span>Database System</span>
+                    <span>System Analysis</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-period">
+                    <i class="fa-regular fa-calendar"></i> 2019 - 2022 (Lulus)
+                  </div>
+                  <h4 class="timeline-title">Rekayasa Perangkat Lunak (RPL)</h4>
+                  <p class="timeline-institution">SMK Negeri Jurusan Informatika</p>
+                  <p class="timeline-description">
+                    Fokus dasar pemrograman algoritma, dasar web (HTML, CSS, JavaScript dasar), pengelolaan database
+                    MySQL, serta pembuatan antarmuka pengguna sederhana.
+                  </p>
+                  <div class="timeline-tags">
+                    <span>Dasar Pemrograman</span>
+                    <span>Frontend Dasar</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 3: Pelatihan / Sertifikasi -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-period">
+                    <i class="fa-regular fa-calendar"></i> 2023 - 2024
+                  </div>
+                  <h4 class="timeline-title">Studi Independen: Front-End Web Specialist</h4>
+                  <p class="timeline-institution">Platform Pembelajaran Digital & Sertifikasi</p>
+                  <p class="timeline-description">
+                    Menyelesaikan kurikulum intensif pembuatan aplikasi web modern responsif, integrasi Web API, dan
+                    best practices UI/UX modern.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Pengalaman (Kerja / Organisasi / Proyek) -->
+          <div class="timeline-column">
+            <div class="column-header">
+              <div class="column-icon"><i class="fa-solid fa-laptop-code"></i></div>
+              <h3>Pengalaman Kerja & Organisasi</h3>
+            </div>
+
+            <div class="timeline">
+              <!-- Experience 1 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-period">
+                    <i class="fa-regular fa-calendar"></i> 2024 - Sekarang
+                  </div>
+                  <h4 class="timeline-title">Frontend Developer (Freelance / Project-Based)</h4>
+                  <p class="timeline-institution">Digital Studio / Klien Mandiri</p>
+                  <ul class="timeline-bullets">
+                    <li>Mengembangkan landing page responsif berbasis HTML5, CSS3 murni, dan JavaScript untuk 5+ UMKM.
+                    </li>
+                    <li>Mengoptimalkan kecepatan loading website hingga mencapai skor Google PageSpeed di atas 90+.</li>
+                    <li>Mengubah desain wireframe dan prototipe Figma menjadi kode web yang rapi dan pixel-perfect.</li>
+                  </ul>
+                  <div class="timeline-tags">
+                    <span>Responsive Layout</span>
+                    <span>Performance</span>
+                    <span>Client Collaboration</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Experience 2 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-period">
+                    <i class="fa-regular fa-calendar"></i> 2023 - 2024
+                  </div>
+                  <h4 class="timeline-title">Koordinator Divisi IT & Desain</h4>
+                  <p class="timeline-institution">Himpunan Mahasiswa Sistem Informasi (HIMSISFO)</p>
+                  <ul class="timeline-bullets">
+                    <li>Memimpin tim beranggotakan 6 orang dalam merancang publikasi digital, website kepanitiaan
+                      seminar, dan media informasi.</li>
+                    <li>Mengelola perilisan website acara tahunan yang dikunjungi lebih dari 1.500+ peserta.</li>
+                  </ul>
+                  <div class="timeline-tags">
+                    <span>Leadership</span>
+                    <span>Team Management</span>
+                    <span>Event Website</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Experience 3 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-period">
+                    <i class="fa-regular fa-calendar"></i> 2023
+                  </div>
+                  <h4 class="timeline-title">Junior Web Contributor (Proyek Akademik)</h4>
+                  <p class="timeline-institution">Laboratorium Komputasi Kampus</p>
+                  <ul class="timeline-bullets">
+                    <li>Membantu merancang antarmuka sistem absensi dan inventaris laboratorium berbasis web.</li>
+                    <li>Menulis dokumentasi teknis dan panduan penggunaan sistem bagi mahasiswa pengguna lab.</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS SECTION ================= -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-code-fork"></i> Portofolio Hasil Karya</span>
+          <h2 class="section-title">Katalog Proyek Unggulan</h2>
+          <p class="section-subtitle">
+            Daftar aplikasi web dan desain yang telah saya bangun dengan fokus pada fungsionalitas, performa, dan
+            pengalaman visual.
+          </p>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-media">
+              <div class="project-preview-mockup bg-mockup-1">
+                <div class="mockup-header">
+                  <span class="mockup-dot red"></span>
+                  <span class="mockup-dot yellow"></span>
+                  <span class="mockup-dot green"></span>
+                  <span class="mockup-address">https://e-katalog.umkm.id</span>
+                </div>
+                <div class="mockup-body">
+                  <i class="fa-solid fa-shop mockup-icon"></i>
+                  <span>E-Commerce & Katalog Produk UMKM</span>
+                </div>
+              </div>
+              <span class="project-category">Web Application</span>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">Katalog Digital & Pemesanan Produk UMKM</h3>
+              <p class="project-description">
+                Website showcase dan pemesanan produk kerajinan lokal dengan fitur filter kategori, keranjang belanja
+                interaktif, kalkulator ongkir sederhana, serta tombol pesan langsung ke WhatsApp penjual.
+              </p>
+
+              <div class="project-tech-list">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3 Flexbox</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">WhatsApp API</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="#" class="btn btn-primary btn-sm project-demo-btn" data-project="Katalog Digital UMKM">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo Langsung
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-media">
+              <div class="project-preview-mockup bg-mockup-2">
+                <div class="mockup-header">
+                  <span class="mockup-dot red"></span>
+                  <span class="mockup-dot yellow"></span>
+                  <span class="mockup-dot green"></span>
+                  <span class="mockup-address">https://dashboard-akademik.univ.id</span>
+                </div>
+                <div class="mockup-body">
+                  <i class="fa-solid fa-chart-line mockup-icon"></i>
+                  <span>Portal Sistem Informasi Akademik</span>
+                </div>
+              </div>
+              <span class="project-category">Fullstack System</span>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">Dashboard Sistem Informasi Nilai & Jadwal</h3>
+              <p class="project-description">
+                Sistem informasi akademik berbasis web untuk mempermudah mahasiswa memantau jadwal kuliah harian,
+                rekapitulasi nilai IPK, dan pengajuan kartu rencana studi secara terstruktur.
+              </p>
+
+              <div class="project-tech-list">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3 Grid</span>
+                <span class="tech-pill">PHP</span>
+                <span class="tech-pill">MySQL</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="#" class="btn btn-primary btn-sm project-demo-btn" data-project="Dashboard Akademik">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo Langsung
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-media">
+              <div class="project-preview-mockup bg-mockup-3">
+                <div class="mockup-header">
+                  <span class="mockup-dot red"></span>
+                  <span class="mockup-dot yellow"></span>
+                  <span class="mockup-dot green"></span>
+                  <span class="mockup-address">https://task-flow.app</span>
+                </div>
+                <div class="mockup-body">
+                  <i class="fa-solid fa-list-check mockup-icon"></i>
+                  <span>Aplikasi Manajemen Tugas (Task Flow)</span>
+                </div>
+              </div>
+              <span class="project-category">Productivity Tool</span>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">Aplikasi Web Manajemen Tugas & Jadwal</h3>
+              <p class="project-description">
+                Aplikasi manajemen tugas produktivitas ringan dengan fitur drag-and-drop kolom Kanban (To Do, In
+                Progress, Done), penyimpanan lokal (LocalStorage), dan filter deadline tugas.
+              </p>
+
+              <div class="project-tech-list">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3 Modern</span>
+                <span class="tech-pill">JavaScript ES6</span>
+                <span class="tech-pill">LocalStorage</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="#" class="btn btn-primary btn-sm project-demo-btn" data-project="Task Flow App">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo Langsung
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card">
+            <div class="project-media">
+              <div class="project-preview-mockup bg-mockup-4">
+                <div class="mockup-header">
+                  <span class="mockup-dot red"></span>
+                  <span class="mockup-dot yellow"></span>
+                  <span class="mockup-dot green"></span>
+                  <span class="mockup-address">https://event-himasi.org</span>
+                </div>
+                <div class="mockup-body">
+                  <i class="fa-solid fa-calendar-star mockup-icon"></i>
+                  <span>Landing Page Seminar Nasional IT</span>
+                </div>
+              </div>
+              <span class="project-category">Landing Page</span>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">Website Resmi Seminar & Workshop Nasional</h3>
+              <p class="project-description">
+                Landing page interaktif untuk promosi acara teknologi dengan hitung mundur (countdown timer), jadwal
+                sesi interaktif, registrasi peserta, dan layout yang 100% responsif di smartphone.
+              </p>
+
+              <div class="project-tech-list">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3 Animations</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">Figma UI/UX</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="#" class="btn btn-primary btn-sm project-demo-btn" data-project="Landing Page Seminar IT">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo Langsung
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT & SOCIAL MEDIA SECTION ================= -->
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-regular fa-handshake"></i> Mari Terhubung</span>
+          <h2 class="section-title">Kontak & Media Sosial</h2>
+          <p class="section-subtitle">
+            Tertarik untuk berkolaborasi dalam proyek web, merekrut magang/karyawan, atau sekadar berdiskusi santai?
+            Jangan ragu untuk menghubungi saya!
+          </p>
+        </div>
+
+        <div class="contact-wrapper">
+
+          <!-- Contact Details & Social Links -->
+          <div class="contact-info-card">
+            <h3 class="contact-card-title">Informasi Kontak</h3>
+            <p class="contact-card-desc">
+              Silakan hubungi saya melalui jalur komunikasi berikut atau kirim pesan langsung melalui formulir di
+              samping.
+            </p>
+
+            <div class="contact-methods">
+              <!-- Item Email -->
+              <a href="mailto:rizky.pratama.dev@email.com" class="contact-method-item">
+                <div class="method-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="method-content">
+                  <span class="method-label">Alamat Email</span>
+                  <span class="method-value">rizky.pratama.dev@email.com</span>
+                </div>
+              </a>
+
+              <!-- Item WhatsApp -->
+              <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
+                class="contact-method-item">
+                <div class="method-icon whatsapp">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="method-content">
+                  <span class="method-label">WhatsApp / Telepon</span>
+                  <span class="method-value">+62 812-3456-7890</span>
+                </div>
+              </a>
+
+              <!-- Item Domisili -->
+              <div class="contact-method-item">
+                <div class="method-icon location">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="method-content">
+                  <span class="method-label">Domisili</span>
+                  <span class="method-value">Jakarta / Depok, Indonesia</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media Profiles -->
+            <div class="social-profiles-box">
+              <h4 class="social-heading">Media Sosial & Jaringan Profesional</h4>
+              <div class="social-links">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link linkedin"
+                  aria-label="LinkedIn Profile">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link github"
+                  aria-label="GitHub Profile">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link instagram"
+                  aria-label="Instagram Profile">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link twitter"
+                  aria-label="Twitter Profile">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-card">
+            <h3 class="contact-card-title">Kirim Pesan Langsung</h3>
+            <p class="contact-card-desc">
+              Saya akan berusaha merespons pesan Anda dalam waktu 1x24 jam kerja.
+            </p>
+
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name" class="form-label">Nama Lengkap <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i class="fa-regular fa-user input-icon"></i>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="Masukkan nama Anda" required>
+                </div>
+                <span class="input-error" id="name-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Alamat Email <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i class="fa-regular fa-envelope input-icon"></i>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="contoh: email@anda.com"
+                    required>
+                </div>
+                <span class="input-error" id="email-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="subject" class="form-label">Subjek Pesan <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-tag input-icon"></i>
+                  <input type="text" id="subject" name="subject" class="form-input"
+                    placeholder="Peluang Kerja / Proyek Freelance / Diskusi" required>
+                </div>
+                <span class="input-error" id="subject-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Isi Pesan <span class="required">*</span></label>
+                <div class="input-wrapper textarea-wrapper">
+                  <i class="fa-regular fa-comment-dots input-icon"></i>
+                  <textarea id="message" name="message" rows="4" class="form-input"
+                    placeholder="Tuliskan detail pesan atau pertanyaan Anda di sini..." required></textarea>
+                </div>
+                <span class="input-error" id="message-error"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btn-submit">
+                <i class="fa-solid fa-paper-plane"></i> Kirimkan Pesan
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <a href="#about" class="footer-logo">
+          <span class="logo-badge">&lt;/&gt;</span> Rizky<span>.dev</span>
+        </a>
+        <p class="footer-tagline">
+          Membangun antarmuka web modern dengan kode yang bersih, terstruktur, dan responsif.
+        </p>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-nav">
+          <a href="#about">Tentang</a>
+          <a href="#experience">Pengalaman</a>
+          <a href="#projects">Proyek</a>
+          <a href="#contact">Kontak</a>
+        </div>
+        <p class="footer-copyright">
+          &copy; 2026 <strong>Rizky Pratama</strong>. Dibuat dengan HTML5 & CSS3. Hak Cipta Dilindungi.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Floating Button -->
+  <a href="#about" class="back-to-top" id="back-to-top" aria-label="Kembali ke atas">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
+
+  <!-- Toast Notification Feedback Container -->
+  <div class="toast-notification" id="toast-notification">
+    <i class="fa-solid fa-circle-check toast-icon"></i>
+    <div class="toast-body">
+      <strong id="toast-title">Pesan Terkirim!</strong>
+      <p id="toast-message">Terima kasih atas pesannya, saya akan segera menghubungi Anda kembali.</p>
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+
+</html>
