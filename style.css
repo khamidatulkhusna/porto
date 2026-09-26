@@ -1,1757 +1,207 @@
-/* ==========================================================
-   PORTOFOLIO PRIBADI - NEUBRUTALISM DESIGN SYSTEM (CSS3)
-   Bold, High-Contrast, Tactile & Iconic Neo-Brutalist Aesthetic
-   ========================================================== */
+/* ============================================================
+   PORTOFOLIO PRIBADI - CUSTOM STYLES & ANIMATIONS
+   Author: Khamidatul Khusna
+   Description: Enhances Tailwind CSS with custom keyframes, 
+   glassmorphism, smooth transitions, and themed components.
+   ============================================================ */
 
-/* ---------- 1. NEUBRUTALISM DESIGN TOKENS ---------- */
-:root {
-  /* Canvas & Paper Backgrounds */
-  --bg-canvas: #FFFDF5;         /* Warm retro cream paper */
-  --bg-canvas-alt: #FFF6DD;     /* Deeper warm canvas for alternating sections */
-  --bg-card: #FFFFFF;           /* High contrast card white */
-  --bg-card-alt: #FEF9C3;       /* Tinted card surface */
-  --bg-dark: #121212;           /* Pitch ink black */
-  --bg-dark-surface: #1E1E1E;   /* Dark surface */
-
-  /* Neo-Brutalist Vivid Accent Colors */
-  --neo-yellow: #FFE600;        /* Signature electric yellow */
-  --neo-yellow-hover: #FFDE00;
-  --neo-green: #00DF81;         /* Electric mint / lime */
-  --neo-green-light: #D1FAE5;
-  --neo-cyan: #38BDF8;          /* Bright retro sky cyan */
-  --neo-cyan-light: #E0F2FE;
-  --neo-pink: #FF5E8E;          /* Punchy brutalist magenta / pink */
-  --neo-pink-light: #FFE4E6;
-  --neo-purple: #A855F7;        /* Playful neo purple */
-  --neo-purple-light: #F3E8FF;
-  --neo-orange: #FF7A00;        /* Vivid safety orange */
-  --neo-orange-light: #FFEDD5;
-
-  /* Ink & Typography Colors */
-  --ink-black: #000000;         /* True pure black */
-  --ink-dark: #18181B;          /* Slate 900 */
-  --ink-muted: #374151;         /* Slate 700 */
-  --ink-subtle: #4B5563;        /* Slate 600 */
-  --ink-white: #FFFFFF;
-
-  /* Neubrutalist Solid Borders */
-  --border-thick: 4px solid var(--ink-black);
-  --border-main: 3px solid var(--ink-black);
-  --border-medium: 2.5px solid var(--ink-black);
-  --border-thin: 2px solid var(--ink-black);
-
-  /* Hard-Edged Drop Shadows (Strict Zero-Blur) */
-  --shadow-sm: 3px 3px 0px var(--ink-black);
-  --shadow-md: 4px 4px 0px var(--ink-black);
-  --shadow-lg: 6px 6px 0px var(--ink-black);
-  --shadow-xl: 8px 8px 0px var(--ink-black);
-  --shadow-mega: 10px 10px 0px var(--ink-black);
-  --shadow-active: 1px 1px 0px var(--ink-black);
-
-  /* Corner Radii */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-  --radius-pill: 9999px;
-
-  /* Typography Stacks */
-  --font-main: 'Plus Jakarta Sans', 'Space Grotesk', -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
-  --font-mono: 'Space Mono', 'Courier New', monospace;
-
-  /* Navigation Height */
-  --nav-height: 80px;
-
-  /* Snappy Tactile Timing */
-  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: 0.15s var(--ease-snappy);
-  --transition-bounce: 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* ---------- 2. RESET & BASE FOUNDATIONS ---------- */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* ---------------- Smooth Scrolling & Base ---------------- */
 html {
-  font-family: var(--font-main);
-  font-size: 16px;
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-height) + 20px);
-  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 5rem;
 }
 
+/* ---------------- Theme Transitions ---------------- */
 body {
-  background-color: var(--bg-canvas);
-  color: var(--ink-black);
-  line-height: 1.6;
-  overflow-x: hidden;
-  /* Retro Neubrutalism dot-grid texture */
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.12) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
-  background-position: 0 0;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-::selection {
-  background-color: var(--neo-yellow);
-  color: var(--ink-black);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: all var(--transition-fast);
-}
-
-ul {
-  list-style: none;
-}
-
-button, input, textarea {
-  font: inherit;
-  color: inherit;
-}
-
-/* ---------- 3. LAYOUT & SHARED UTILITIES ---------- */
-.container {
-  width: 100%;
-  max-width: 1220px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
-.section {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  position: relative;
-}
-
-.section-alt {
-  background-color: var(--bg-canvas-alt);
-  border-top: var(--border-thick);
-  border-bottom: var(--border-thick);
-}
-
-/* Neubrutalist Text Highlighter Tag */
-.text-gradient {
-  background: var(--neo-yellow);
-  color: var(--ink-black) !important;
-  -webkit-text-fill-color: var(--ink-black) !important;
-  border: var(--border-main);
-  box-shadow: var(--shadow-sm);
-  padding: 2px 14px;
-  display: inline-block;
-  transform: rotate(-1.5deg);
-  border-radius: var(--radius-sm);
-  letter-spacing: -0.02em;
-  margin-left: 4px;
-  transition: transform var(--transition-bounce), box-shadow var(--transition-fast);
-}
-
-.text-gradient:hover {
-  transform: rotate(1deg) scale(1.02);
-  box-shadow: var(--shadow-md);
-}
-
-/* Section Header */
-.section-header {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 60px auto;
-}
-
-.section-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: var(--neo-yellow);
-  color: var(--ink-black);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 8px 18px;
-  border-radius: var(--radius-pill);
-  border: var(--border-main);
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 18px;
-  transform: rotate(-1deg);
-  transition: transform var(--transition-bounce), box-shadow var(--transition-fast);
-}
-
-.section-tag:hover {
-  transform: rotate(1.5deg) scale(1.03);
-  box-shadow: var(--shadow-md);
-}
-
-.section-tag i {
-  font-size: 0.95rem;
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: var(--ink-black);
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  margin-bottom: 16px;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: var(--ink-muted);
-  font-weight: 600;
-  line-height: 1.65;
-}
-
-/* ---------- 4. NEUBRUTALIST BUTTONS ---------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
-  padding: 13px 26px;
-  border-radius: var(--radius-md);
-  border: var(--border-main);
-  box-shadow: var(--shadow-md);
-  cursor: pointer;
-  text-align: center;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
-  user-select: none;
-}
-
-.btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: var(--shadow-active);
-}
-
-.btn-sm {
-  padding: 9px 18px;
-  font-size: 0.85rem;
-  border-radius: var(--radius-sm);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-sm:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-sm:active {
-  transform: translate(2px, 2px);
-  box-shadow: 0px 0px 0px var(--ink-black);
-}
-
-/* Primary Button: Electric Yellow */
-.btn-primary {
-  background-color: var(--neo-yellow);
-  color: var(--ink-black);
-}
-
-.btn-primary:hover {
-  background-color: var(--neo-yellow-hover);
-  color: var(--ink-black);
-}
-
-/* Secondary Button: Crisp White / Neo Cyan on Hover */
-.btn-secondary {
-  background-color: var(--bg-card);
-  color: var(--ink-black);
-}
-
-.btn-secondary:hover {
-  background-color: var(--neo-cyan);
-  color: var(--ink-black);
-}
-
-/* Outline Button: Coral Pink on Hover */
-.btn-outline {
-  background-color: var(--bg-card);
-  color: var(--ink-black);
-}
-
-.btn-outline:hover {
-  background-color: var(--neo-pink);
-  color: var(--ink-black);
-}
-
-.btn-block {
-  width: 100%;
-}
-
-/* ---------- 5. STICKY HEADER & NAVBAR ---------- */
-.header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--nav-height);
-  background-color: var(--bg-canvas);
-  border-bottom: var(--border-thick);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.header.scrolled {
-  background-color: #FFFFFF;
-  box-shadow: 0 4px 0px rgba(0, 0, 0, 0.15);
-}
-
-.navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Neubrutalist Logo */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 1.45rem;
-  letter-spacing: -0.04em;
-  color: var(--ink-black);
-  transition: transform var(--transition-bounce);
-}
-
-.logo:hover {
-  transform: scale(1.04);
-}
-
-.logo-badge {
-  background-color: var(--neo-yellow);
-  color: var(--ink-black);
-  font-size: 0.85rem;
-  padding: 5px 10px;
-  border-radius: var(--radius-sm);
-  font-weight: 900;
-  font-family: var(--font-mono);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-}
-
-.logo-text span {
-  background-color: var(--neo-cyan);
-  padding: 1px 6px;
-  border-radius: 4px;
-  border: 2px solid var(--ink-black);
-  margin-left: 3px;
-  font-size: 1.1rem;
-}
-
-/* Desktop Navigation */
-.nav-menu {
-  display: flex;
-  align-items: center;
-}
-
-.nav-list {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--ink-black);
-  padding: 8px 16px;
-  border-radius: var(--radius-sm);
-  border: 2.5px solid transparent;
-  transition: all var(--transition-fast);
-}
-
-.nav-link i {
-  font-size: 0.95rem;
-  transition: transform var(--transition-fast);
-}
-
-.nav-link:hover {
-  background-color: var(--neo-cyan-light);
-  border-color: var(--ink-black);
-  box-shadow: var(--shadow-sm);
-  transform: translate(-1px, -1px);
-}
-
-.nav-link:hover i {
-  transform: rotate(-10deg) scale(1.15);
-}
-
-.nav-link.active {
-  background-color: var(--neo-yellow);
-  border-color: var(--ink-black);
-  box-shadow: var(--shadow-sm);
-  transform: translate(-1px, -1px);
-}
-
-.nav-link.active::after {
-  display: none; /* No soft gradient bar in Neubrutalism */
-}
-
-.nav-cta-mobile {
-  display: none;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.nav-toggle {
-  display: none;
-  background-color: var(--neo-yellow);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sm);
-  font-size: 1.35rem;
-  color: var(--ink-black);
-  cursor: pointer;
-  padding: 8px 12px;
-  transition: all var(--transition-fast);
-}
-
-.nav-toggle:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-md);
-}
-
-.nav-toggle:active {
-  transform: translate(1px, 1px);
-  box-shadow: 0 0 0 #000;
-}
-
-/* ---------- 6. HERO & ABOUT SECTION ---------- */
-.hero-section {
-  padding-top: 60px;
-  padding-bottom: 90px;
-}
-
-.hero-container {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  align-items: center;
-  gap: 60px;
-}
-
-/* Availability Badge */
-.availability-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background-color: var(--neo-green-light);
-  color: var(--ink-black);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  padding: 7px 16px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 800;
-  margin-bottom: 24px;
-  transform: rotate(-1deg);
-  transition: transform var(--transition-bounce), box-shadow var(--transition-fast);
-}
-
-.availability-badge:hover {
-  transform: rotate(1deg) scale(1.02);
-  box-shadow: var(--shadow-md);
-}
-
-.status-dot {
+/* ---------------- Custom Scrollbar ---------------- */
+::-webkit-scrollbar {
   width: 10px;
-  height: 10px;
-  background-color: var(--neo-green);
-  border: 2px solid var(--ink-black);
-  border-radius: 50%;
-  animation: pulse-brutal 1.8s infinite;
 }
 
-@keyframes pulse-brutal {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 223, 129, 0.7); }
-  50% { transform: scale(1.2); box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.2); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 223, 129, 0); }
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
 }
 
-/* Hero Typography */
-.hero-title {
-  font-family: var(--font-display);
-  font-size: 3.25rem;
-  font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -0.04em;
-  margin-bottom: 14px;
-  color: var(--ink-black);
+.dark ::-webkit-scrollbar-track {
+  background: #0b0f19;
 }
 
-.hero-subtitle {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--ink-muted);
-  margin-bottom: 22px;
-  line-height: 1.4;
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 
-.hero-subtitle span {
-  color: var(--ink-black);
-  background-color: var(--neo-cyan-light);
-  border-bottom: 3.5px solid var(--ink-black);
-  padding: 0 4px;
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 
-.hero-bio {
-  font-size: 1.05rem;
-  color: var(--ink-muted);
-  line-height: 1.75;
-  margin-bottom: 32px;
-  max-width: 580px;
-  font-weight: 500;
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
 }
 
-/* Neubrutalist Quick Stats Cards */
-.quick-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 36px;
+/* ---------------- Glassmorphism Styles ---------------- */
+.glass-nav {
+  background-color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.stat-card {
-  background-color: #FFFFFF;
-  padding: 18px 16px;
-  border-radius: var(--radius-md);
-  border: var(--border-main);
-  box-shadow: var(--shadow-card);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  position: relative;
-  overflow: hidden;
+.dark .glass-nav {
+  background-color: rgba(11, 15, 25, 0.85);
+  border-bottom: 1px solid rgba(31, 41, 55, 0.8);
 }
 
-.stat-card:nth-child(1) { border-top: 6px solid var(--neo-yellow); }
-.stat-card:nth-child(2) { border-top: 6px solid var(--neo-cyan); }
-.stat-card:nth-child(3) { border-top: 6px solid var(--neo-green); }
-
-.stat-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-xl);
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
 }
 
-.stat-number {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--ink-black);
-  line-height: 1.1;
-  margin-bottom: 4px;
+.dark .glass-card {
+  background-color: rgba(17, 24, 39, 0.85);
+  border: 1px solid rgba(31, 41, 55, 0.9);
 }
 
-.stat-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--ink-subtle);
-  line-height: 1.3;
+/* ---------------- Glow & Gradient Accents ---------------- */
+.glow-primary {
+  box-shadow: 0 0 35px -5px rgba(99, 102, 241, 0.3);
 }
 
-/* Action Buttons */
-.hero-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 36px;
+.dark .glow-primary {
+  box-shadow: 0 0 45px -5px rgba(99, 102, 241, 0.45);
 }
 
-/* Tech Stack Badges */
-.tech-stack-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.text-gradient {
+  background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.tech-stack-title {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: var(--ink-black);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.dark .text-gradient {
+  background: linear-gradient(135deg, #818cf8 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+/* ---------------- Floating Micro-badges Animation ---------------- */
+@keyframes floatAnimA {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
 }
 
-.tech-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #FFFFFF;
-  color: var(--ink-black);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  padding: 7px 14px;
-  border-radius: var(--radius-sm);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
+@keyframes floatAnimB {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-2deg);
+  }
 }
 
-.tech-tag:hover {
-  background-color: var(--neo-yellow);
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-md);
+.animate-float-1 {
+  animation: floatAnimA 4.5s ease-in-out infinite;
 }
 
-.tech-tag i {
-  color: var(--ink-black);
-  font-size: 1rem;
+.animate-float-2 {
+  animation: floatAnimB 5s ease-in-out infinite 0.8s;
 }
 
-/* Hero Visual / Neo Profile Card */
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  position: relative;
+.animate-float-3 {
+  animation: floatAnimA 5.5s ease-in-out infinite 1.5s;
 }
 
-.profile-card {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
+/* ---------------- Pulse Dot for Availability ---------------- */
+@keyframes pulseDot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
 }
 
-/* Hard Offset Shadow Block behind the Profile */
-.profile-glow {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  width: 100%;
-  height: 100%;
-  background-color: var(--neo-yellow);
-  border: var(--border-thick);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-  z-index: 0;
-  opacity: 1;
-  filter: none;
+.pulse-available {
+  animation: pulseDot 2s infinite;
 }
 
-.profile-image-wrapper {
-  position: relative;
-  z-index: 1;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  border: var(--border-thick);
-  box-shadow: var(--shadow-lg);
-  background-color: #FFFFFF;
-  aspect-ratio: 4 / 4.7;
+/* ---------------- Skills Progress Bar Transition ---------------- */
+.skill-bar-fill {
+  width: 0%;
+  transition: width 1.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.profile-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s var(--ease-snappy);
-}
-
-.profile-card:hover .profile-image {
-  transform: scale(1.04);
-}
-
-/* Floating Neubrutalist Badges */
-.floating-badge {
-  position: absolute;
-  z-index: 2;
-  background-color: #FFFFFF;
-  border: var(--border-main);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--radius-md);
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: transform var(--transition-bounce), box-shadow var(--transition-fast);
-}
-
-.floating-badge strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 800;
-  color: var(--ink-black);
-  line-height: 1.2;
-}
-
-.floating-badge small {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--ink-muted);
-}
-
-.badge-code {
-  top: 14px;
-  left: -24px;
-  transform: rotate(-3deg);
-}
-
-.badge-code i {
-  background-color: var(--neo-yellow);
-  color: var(--ink-black);
-  font-size: 1.2rem;
-  padding: 8px 10px;
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--ink-black);
-}
-
-.badge-design {
-  bottom: 24px;
-  right: -20px;
-  transform: rotate(2.5deg);
-}
-
-.badge-design i {
-  background-color: var(--neo-cyan);
-  color: var(--ink-black);
-  font-size: 1.2rem;
-  padding: 8px 10px;
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--ink-black);
-}
-
-.floating-badge:hover {
-  transform: scale(1.06) rotate(0deg);
-  box-shadow: var(--shadow-lg);
-}
-
-/* ---------- 7. NEUBRUTALISM TICKER BANNER ---------- */
-.ticker-banner {
-  background-color: var(--neo-yellow);
-  border-top: var(--border-thick);
-  border-bottom: var(--border-thick);
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 14px 0;
-  position: relative;
-  user-select: none;
-}
-
-.ticker-track {
-  display: inline-flex;
-  gap: 36px;
-  animation: ticker-loop 24s linear infinite;
-}
-
-.ticker-banner:hover .ticker-track {
-  animation-play-state: paused;
-}
-
-.ticker-item {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: var(--ink-black);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-@keyframes ticker-loop {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ---------- 8. EDUCATION & EXPERIENCE (TIMELINE) ---------- */
-.experience-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
-}
-
-.timeline-column {
-  background-color: var(--bg-card);
-  padding: 38px 32px;
-  border-radius: var(--radius-lg);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-xl);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.timeline-column:hover {
-  box-shadow: var(--shadow-mega);
-}
-
-.column-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
-  padding-bottom: 18px;
-  border-bottom: var(--border-main);
-}
-
-.column-icon {
-  width: 50px;
-  height: 50px;
-  background-color: var(--neo-yellow);
-  color: var(--ink-black);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.35rem;
-}
-
-.timeline-column:nth-child(2) .column-icon {
-  background-color: var(--neo-cyan);
-}
-
-.column-header h3 {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--ink-black);
-  letter-spacing: -0.02em;
-}
-
-/* Timeline Layout */
-.timeline {
-  position: relative;
-  padding-left: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-/* Thick Black Timeline Spine */
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  bottom: 8px;
-  left: 8px;
-  width: 4px;
-  background-color: var(--ink-black);
-}
-
-.timeline-item {
-  position: relative;
-}
-
-/* Brutalist Geometric Timeline Dot */
-.timeline-dot {
-  position: absolute;
-  top: 6px;
-  left: -32px;
-  width: 18px;
-  height: 18px;
-  background-color: var(--neo-yellow);
-  border: 3px solid var(--ink-black);
-  border-radius: 4px;
-  z-index: 1;
-  transition: transform var(--transition-bounce), background-color var(--transition-fast);
-}
-
-.timeline-item:hover .timeline-dot {
-  background-color: var(--neo-pink);
-  transform: scale(1.3) rotate(45deg);
-}
-
-/* Timeline Content Card */
-.timeline-content {
-  background-color: #FFFFFF;
-  padding: 22px;
-  border-radius: var(--radius-md);
-  border: var(--border-main);
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-fast);
-}
-
-.timeline-content:hover {
-  background-color: #FFFDF0;
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-xl);
-}
-
-.timeline-period {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: var(--ink-black);
-  background-color: var(--neo-yellow);
-  border: var(--border-thin);
-  box-shadow: 2px 2px 0px var(--ink-black);
-  padding: 4px 12px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 12px;
-}
-
-.timeline-title {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--ink-black);
-  margin-bottom: 4px;
-}
-
-.timeline-institution {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--ink-muted);
-  margin-bottom: 12px;
-}
-
-.timeline-description {
-  font-size: 0.92rem;
-  color: var(--ink-muted);
-  line-height: 1.6;
-  margin-bottom: 14px;
-}
-
-.timeline-bullets {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin-bottom: 14px;
-}
-
-.timeline-bullets li {
-  font-size: 0.92rem;
-  color: var(--ink-muted);
-  line-height: 1.55;
-  margin-bottom: 6px;
-}
-
-.timeline-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.timeline-tags span {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  background-color: var(--bg-canvas);
-  color: var(--ink-black);
-  border: 2px solid var(--ink-black);
-  box-shadow: 2px 2px 0px var(--ink-black);
-  padding: 3px 10px;
-  border-radius: 4px;
-}
-
-/* ---------- 9. PROJECTS SECTION ---------- */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 36px;
-}
-
+/* ---------------- Project Filter Fade Animation ---------------- */
 .project-card {
-  background-color: var(--bg-card);
-  border-radius: var(--radius-lg);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.project-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: var(--shadow-mega);
-}
-
-.project-media {
-  position: relative;
-  background-color: #F8F9FA;
-  padding: 20px;
-  border-bottom: var(--border-thick);
-}
-
-/* Neubrutalist Retro Browser Mockup */
-.project-preview-mockup {
-  border-radius: var(--radius-md);
-  border: var(--border-main);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 190px;
-  transition: transform var(--transition-bounce);
-}
-
-.project-card:hover .project-preview-mockup {
-  transform: scale(1.02);
-}
-
-/* Distinctive Pop Mockup Themes */
-.bg-mockup-1 { background-color: #FEF08A; }
-.bg-mockup-2 { background-color: #BAE6FD; }
-.bg-mockup-3 { background-color: #BBF7D0; }
-.bg-mockup-4 { background-color: #FED7AA; }
-
-.mockup-header {
-  background-color: #FFFFFF;
-  padding: 9px 14px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  border-bottom: var(--border-main);
-}
-
-.mockup-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  border: 1.5px solid var(--ink-black);
-}
-
-.mockup-dot.red { background-color: #FF5E57; }
-.mockup-dot.yellow { background-color: #FFBD2E; }
-.mockup-dot.green { background-color: #28CA41; }
-
-.mockup-address {
-  margin-left: 10px;
-  font-size: 0.72rem;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  color: var(--ink-black);
-  background-color: #F1F5F9;
-  border: 1.5px solid var(--ink-black);
-  padding: 3px 12px;
-  border-radius: 4px;
-  width: 72%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.mockup-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 20px;
-  color: var(--ink-black);
-  text-align: center;
-  gap: 12px;
-}
-
-.mockup-icon {
-  font-size: 2.5rem;
-  color: var(--ink-black);
-  background-color: #FFFFFF;
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  padding: 14px;
-  border-radius: var(--radius-sm);
-}
-
-.mockup-body span {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  background-color: #FFFFFF;
-  border: var(--border-thin);
-  padding: 4px 12px;
-  border-radius: 4px;
-  box-shadow: 2px 2px 0px #000;
-}
-
-/* Category Badge Sticker */
-.project-category {
-  position: absolute;
-  top: 28px;
-  right: 28px;
-  background-color: var(--neo-purple-light);
-  color: var(--ink-black);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 5px 12px;
-  border-radius: var(--radius-pill);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  z-index: 2;
-  transform: rotate(2deg);
-}
-
-.project-body {
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  background-color: #FFFFFF;
-}
-
-.project-title {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--ink-black);
-  margin-bottom: 12px;
-  line-height: 1.35;
-}
-
-.project-description {
-  font-size: 0.95rem;
-  color: var(--ink-muted);
-  line-height: 1.6;
-  margin-bottom: 22px;
-  flex: 1;
-}
-
-.project-tech-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.tech-pill {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  background-color: var(--bg-canvas);
-  color: var(--ink-black);
-  border: 2px solid var(--ink-black);
-  box-shadow: 2px 2px 0px var(--ink-black);
-  padding: 4px 12px;
-  border-radius: var(--radius-sm);
-}
-
-.project-actions {
-  display: flex;
-  gap: 14px;
-  padding-top: 18px;
-  border-top: var(--border-main);
-}
-
-.project-actions .btn {
-  flex: 1;
-}
-
-/* ---------- 10. CONTACT & SOCIAL SECTION ---------- */
-.contact-wrapper {
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 36px;
-}
-
-.contact-info-card,
-.contact-form-card {
-  background-color: var(--bg-card);
-  padding: 40px;
-  border-radius: var(--radius-lg);
-  border: var(--border-thick);
-  box-shadow: var(--shadow-xl);
-}
-
-.contact-card-title {
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 900;
-  color: var(--ink-black);
-  margin-bottom: 10px;
-  letter-spacing: -0.02em;
-}
-
-.contact-card-desc {
-  font-size: 0.98rem;
-  color: var(--ink-muted);
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.contact-methods {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 36px;
-}
-
-.contact-method-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  background-color: #FFFFFF;
-  border: var(--border-main);
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
-}
-
-.contact-method-item:hover {
-  background-color: #FFFDF0;
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-md);
-}
-
-.method-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: var(--radius-sm);
-  background-color: var(--neo-yellow);
-  color: var(--ink-black);
-  border: var(--border-medium);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.35rem;
-  flex-shrink: 0;
-}
-
-.method-icon.whatsapp {
-  background-color: var(--neo-green);
-}
-
-.method-icon.location {
-  background-color: var(--neo-cyan);
-}
-
-.method-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.method-label {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 800;
-  color: var(--ink-subtle);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.method-value {
-  font-size: 0.98rem;
-  font-weight: 800;
-  color: var(--ink-black);
-}
-
-/* Social Media Box */
-.social-profiles-box {
-  padding-top: 26px;
-  border-top: var(--border-main);
-}
-
-.social-heading {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--ink-black);
-  margin-bottom: 16px;
-}
-
-.social-links {
-  display: flex;
-  gap: 12px;
-}
-
-.social-link {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-sm);
-  background-color: #FFFFFF;
-  color: var(--ink-black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  border: var(--border-main);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
-}
-
-.social-link:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-md);
-}
-
-.social-link.linkedin:hover { background-color: #0A66C2; color: #FFFFFF; }
-.social-link.github:hover { background-color: var(--neo-yellow); color: #000000; }
-.social-link.instagram:hover { background-color: var(--neo-pink); color: #FFFFFF; }
-.social-link.twitter:hover { background-color: var(--neo-cyan); color: #000000; }
-
-/* Contact Form Elements */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.form-label {
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  font-weight: 800;
-  color: var(--ink-black);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.form-label .required {
-  color: #DC2626;
-  font-weight: 900;
-}
-
-.input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input-icon {
-  position: absolute;
-  left: 14px;
-  color: var(--ink-black);
-  font-size: 1rem;
+.project-card.hide {
+  opacity: 0;
+  transform: scale(0.92);
   pointer-events: none;
-}
-
-.form-input {
-  width: 100%;
-  padding: 13px 14px 13px 44px;
-  border: var(--border-main);
-  border-radius: var(--radius-sm);
-  background-color: #FFFFFF;
-  color: var(--ink-black);
-  font-size: 0.95rem;
-  font-weight: 600;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
-}
-
-.form-input:focus {
-  outline: none;
-  background-color: #FFFDF8;
-  border-color: var(--ink-black);
-  box-shadow: 5px 5px 0px var(--neo-yellow);
-}
-
-.form-input.is-invalid {
-  border-color: #DC2626;
-  background-color: #FEF2F2;
-  box-shadow: 4px 4px 0px #DC2626;
-}
-
-.textarea-wrapper {
-  align-items: flex-start;
-}
-
-.textarea-wrapper .input-icon {
-  top: 16px;
-}
-
-.textarea-wrapper textarea.form-input {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.input-error {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #DC2626;
-  min-height: 18px;
-  margin-top: 2px;
-}
-
-/* ---------- 11. FOOTER ---------- */
-.footer {
-  background-color: var(--ink-dark);
-  color: #CBD5E1;
-  padding-top: 60px;
-  padding-bottom: 40px;
-  border-top: var(--border-thick);
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.footer-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 900;
-  color: #FFFFFF;
-  margin-bottom: 14px;
-}
-
-.footer-logo .logo-badge {
-  background-color: var(--neo-yellow);
-  color: #000000;
-  border: 2px solid #FFFFFF;
-  box-shadow: 2px 2px 0px #FFFFFF;
-}
-
-.footer-logo span {
-  color: var(--neo-yellow);
-}
-
-.footer-tagline {
-  max-width: 380px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.footer-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 18px;
-}
-
-.footer-nav {
-  display: flex;
-  gap: 24px;
-}
-
-.footer-nav a {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: #E2E8F0;
-  transition: color var(--transition-fast);
-}
-
-.footer-nav a:hover {
-  color: var(--neo-yellow);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.footer-copyright {
-  font-size: 0.88rem;
-  color: #94A3B8;
-}
-
-.footer-copyright strong {
-  color: var(--neo-yellow);
-}
-
-/* ---------- 12. BACK TO TOP BUTTON ---------- */
-.back-to-top {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 50px;
-  height: 50px;
-  border-radius: var(--radius-sm);
-  background-color: var(--neo-yellow);
-  color: var(--ink-black);
-  border: var(--border-main);
-  box-shadow: var(--shadow-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.15rem;
-  opacity: 0;
+  position: absolute;
   visibility: hidden;
-  transform: translateY(12px);
-  transition: all var(--transition-fast);
-  z-index: 999;
 }
 
-.back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.back-to-top:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-lg);
-  background-color: var(--neo-cyan);
-}
-
-.back-to-top:active {
-  transform: translate(2px, 2px);
-  box-shadow: 0px 0px 0px #000;
-}
-
-/* ---------- 13. TOAST NOTIFICATION ---------- */
-.toast-notification {
-  position: fixed;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%) translateY(120px);
-  background-color: #FFFFFF;
-  color: var(--ink-black);
-  padding: 16px 24px;
-  border-radius: var(--radius-md);
-  border: var(--border-thick);
-  box-shadow: 8px 8px 0px var(--ink-black);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  max-width: 90%;
-  width: 450px;
-  z-index: 2000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.35s var(--ease-snappy);
-}
-
-.toast-notification.show {
-  transform: translateX(-50%) translateY(0);
-  opacity: 1;
-  visibility: visible;
-}
-
-.toast-icon {
-  font-size: 1.75rem;
-  color: var(--ink-black);
-  background-color: var(--neo-yellow);
-  border: 2px solid var(--ink-black);
-  border-radius: 50%;
-  padding: 6px;
-  flex-shrink: 0;
-}
-
-.toast-body strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 800;
-  margin-bottom: 2px;
-}
-
-.toast-body p {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--ink-muted);
-  margin: 0;
-}
-
-/* ---------- 14. RESPONSIVE BREAKPOINTS ---------- */
-
-/* Tablet & Medium Screens (max-width: 1024px) */
-@media (max-width: 1024px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 44px;
-  }
-
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-bio {
-    max-width: 100%;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .tech-stack-wrapper {
-    align-items: center;
-  }
-
-  .quick-stats {
-    width: 100%;
-    max-width: 600px;
-  }
-
-  .experience-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Mobile Devices (max-width: 768px) */
-@media (max-width: 768px) {
-  :root {
-    --nav-height: 72px;
-  }
-
-  .section {
-    padding-top: 70px;
-    padding-bottom: 70px;
-  }
-
-  .hero-title {
-    font-size: 2.35rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.15rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .quick-stats {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-buttons .btn {
-    width: 100%;
-  }
-
-  .project-actions {
-    flex-direction: column;
-  }
-
-  .contact-info-card,
-  .contact-form-card {
-    padding: 24px;
-  }
-
-  .timeline-column {
-    padding: 28px 20px;
-  }
-
-  .d-none-mobile {
-    display: none !important;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-
-  /* Mobile Neubrutalist Menu Drawer */
-  .nav-menu {
-    position: fixed;
-    top: var(--nav-height);
-    left: 0;
-    width: 100%;
-    background-color: var(--bg-canvas);
-    border-bottom: var(--border-thick);
-    box-shadow: 0 8px 0px rgba(0, 0, 0, 0.2);
-    flex-direction: column;
-    padding: 24px;
-    transform: translateY(-160%);
+/* ---------------- Modal & Overlay Animation ---------------- */
+@keyframes modalPop {
+  0% {
     opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s var(--ease-snappy);
+    transform: scale(0.95) translateY(12px);
   }
-
-  .nav-menu.open {
-    transform: translateY(0);
+  100% {
     opacity: 1;
-    visibility: visible;
+    transform: scale(1) translateY(0);
   }
+}
 
-  .nav-list {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 12px;
-  }
+.modal-animate {
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
-  .nav-link {
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
-    background-color: #FFFFFF;
-    border: var(--border-main);
-    box-shadow: var(--shadow-sm);
-    font-size: 1rem;
+/* ---------------- Loading Spinner ---------------- */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
+}
 
-  .nav-link.active {
-    background-color: var(--neo-yellow);
-  }
+.animate-spin-custom {
+  animation: spin 0.8s linear infinite;
+}
 
-  .nav-cta-mobile {
-    display: block;
-    width: 100%;
-    margin-top: 14px;
+/* ---------------- Success Checkmark Draw Animation ---------------- */
+@keyframes checkmarkStroke {
+  0% {
+    stroke-dashoffset: 48;
   }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
 
-  .nav-cta-mobile .btn {
-    width: 100%;
-  }
-
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-right {
-    align-items: center;
-  }
-
-  .footer-nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .floating-badge {
-    display: none; /* Hide floating badges on tight mobile screens */
-  }
+.checkmark-path {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: checkmarkStroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) 0.2s forwards;
 }

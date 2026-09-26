@@ -1,729 +1,1292 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Website Portofolio Pribadi - Menampilkan profil, riwayat pendidikan, pengalaman kerja/organisasi, dan katalog proyek web development.">
-  <meta name="keywords" content="Portfolio, Web Developer, Frontend, HTML, CSS, JavaScript, Portofolio Pribadi">
-  <meta name="author" content="Rizky Pratama">
-  <title>Portofolio Pribadi | Web Developer</title>
+    content="Portofolio Pribadi Khamidatul Khusna - Frontend Web Developer & UI/UX Designer. Berpengalaman membangun website interaktif, modern, dan responsif.">
+  <meta name="keywords" content="Portfolio, Web Developer, Frontend, UI/UX, Tailwind CSS, JavaScript, Khamidatul Khusna">
+  <meta name="author" content="Khamidatul Khusna">
 
-  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, Space Mono -->
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Khamidatul Khusna | Web Developer & UI/UX Designer">
+  <meta property="og:description"
+    content="Website Portofolio Interaktif, Modern, dan Responsif dibangun dengan HTML5, Tailwind CSS, dan JavaScript.">
+  <meta property="og:type" content="website">
+
+  <title>Khamidatul Khusna | Portofolio Web Developer</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Fira Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
 
-  <!-- Font Awesome Icons CDN -->
+  <!-- Font Awesome 6.5.1 CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Custom CSS -->
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            },
+            darkBg: '#0a0f1d',
+            darkCard: '#111827',
+            darkSurface: '#1e293b'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS Enhancements -->
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="bg-slate-50 text-slate-800 dark:bg-darkBg dark:text-slate-100 antialiased selection:bg-brand-500 selection:text-white">
 
-  <!-- ================= NAVBAR ================= -->
-  <header class="header" id="header">
-    <div class="container navbar-container">
-      <a href="#about" class="logo">
-        <span class="logo-badge">&lt;/&gt;</span>
-        <span class="logo-text">Rizky<span>.dev</span></span>
+  <!-- ================= HEADER & NAVBAR ================= -->
+  <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 glass-nav" id="main-navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-2 group text-xl font-extrabold tracking-tight">
+        <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-400 text-white flex items-center justify-center font-mono text-lg shadow-md group-hover:scale-105 transition-transform">
+          &lt;/&gt;
+        </span>
+        <span class="text-slate-900 dark:text-white">Khusna<span class="text-brand-600 dark:text-brand-400">.dev</span></span>
       </a>
 
       <!-- Desktop Navigation Menu -->
-      <nav class="nav-menu" id="nav-menu">
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a href="#about" class="nav-link active">
-              <i class="fa-solid fa-user"></i> Tentang Saya
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#experience" class="nav-link">
-              <i class="fa-solid fa-graduation-cap"></i> Pendidikan & Pengalaman
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#projects" class="nav-link">
-              <i class="fa-solid fa-folder-open"></i> Proyek
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#contact" class="nav-link">
-              <i class="fa-solid fa-envelope"></i> Kontak
-            </a>
-          </li>
-        </ul>
-        <div class="nav-cta-mobile">
-          <a href="#contact" class="btn btn-primary btn-sm">Hubungi Saya</a>
-        </div>
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+        <a href="#hero" class="nav-desktop-link px-3.5 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 rounded-lg transition-colors">
+          Beranda
+        </a>
+        <a href="#about" class="nav-desktop-link px-3.5 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 rounded-lg transition-colors">
+          Tentang Saya
+        </a>
+        <a href="#skills" class="nav-desktop-link px-3.5 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 rounded-lg transition-colors">
+          Keahlian
+        </a>
+        <a href="#projects" class="nav-desktop-link px-3.5 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 rounded-lg transition-colors">
+          Proyek
+        </a>
+        <a href="#contact" class="nav-desktop-link px-3.5 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 rounded-lg transition-colors">
+          Kontak
+        </a>
       </nav>
 
-      <!-- Right Header Actions -->
-      <div class="header-actions">
-        <a href="#contact" class="btn btn-primary btn-sm d-none-mobile">
-          <i class="fa-regular fa-paper-plane"></i> Hire Me
+      <!-- Header Action Items (Theme Toggle & CTA) -->
+      <div class="flex items-center gap-3">
+        <!-- Dark / Light Mode Toggle Button -->
+        <button type="button" class="theme-toggle-btn p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-300 dark:hover:border-brand-500 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+          aria-label="Ubah tema gelap atau terang" title="Ganti Mode Gelap / Terang">
+          <i class="fa-solid fa-sun theme-icon-sun hidden text-amber-400 text-lg"></i>
+          <i class="fa-solid fa-moon theme-icon-moon text-indigo-600 text-lg"></i>
+        </button>
+
+        <!-- CTA Hire Me Button (Desktop) -->
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-500/20 transition-all hover:scale-[1.02] active:scale-95">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+          <span>Hubungi Saya</span>
         </a>
-        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
-          <i class="fa-solid fa-bars" id="toggle-icon"></i>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button type="button" id="mobile-menu-toggle" class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-brand-600 focus:outline-none"
+          aria-label="Buka menu navigasi">
+          <i class="fa-solid fa-bars text-xl"></i>
         </button>
       </div>
+
     </div>
   </header>
 
-  <main>
-    <!-- ================= HERO & ABOUT SECTION ================= -->
-    <section class="section hero-section" id="about">
-      <div class="container hero-container">*3
-        <!-- Hero Content / Te**66
-          <div class="availability-badge">
-            <span class="status-dot"></span>
-            <span>Tersedia untuk Peluang & Proyek Baru</span>
-          </div>
-
-          <h1 class="hero-title">
-            Halo, Saya <span class="text-gradient">Rizky Pratama</span>
-          </h1>
-
-          <h2 class="hero-subtitle">
-            Mahasiswa Sistem Informasi & <span>Frontend Web Developer</span>
-          </h2>
-
-          <p class="hero-bio">
-            Saya berfokus pada perancangan antarmuka website yang bersih, responsif, dan mudah digunakan. Senang
-            mengeksplorasi teknologi web modern, mengubah kebutuhan bisnis menjadi solusi digital yang terstruktur,
-            serta memiliki ketertarikan tinggi pada UI/UX Design dan Frontend Development.
-          </p>
-
-          <!-- Key Highlights / Quick Stats -->
-          <div class="quick-stats">
-            <div class="stat-card">
-              <span class="stat-number">3+</span>
-              <span class="stat-label">Tahun Belajar & Eksplorasi</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-number">12+</span>
-              <span class="stat-label">Proyek Selesai</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-number">100%</span>
-              <span class="stat-label">Dedikasi & Kolaborasi</span>
-            </div>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="hero-buttons">
-            <a href="#contact" class="btn btn-primary">
-              <i class="fa-solid fa-paper-plane"></i> Hubungi Saya
-            </a>
-            <a href="#projects" class="btn btn-secondary">
-              <i class="fa-solid fa-eye"></i> Lihat Karya
-            </a>
-            <a href="#" class="btn btn-outline" id="btn-cv" title="Unduh Curriculum Vitae">
-              <i class="fa-solid fa-file-arrow-down"></i> Unduh CV
-            </a>
-          </div>
-
-          <!-- Skills Badges -->
-          <div class="tech-stack-wrapper">
-            <span class="tech-stack-title">Tech Stack Utama:</span>
-            <div class="tech-tags">
-              <span class="tech-tag"><i class="fa-brands fa-html5"></i> HTML5</span>
-              <span class="tech-tag"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
-              <span class="tech-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
-              <span class="tech-tag"><i class="fa-brands fa-php"></i> PHP</span>
-              <span class="tech-tag"><i class="fa-brands fa-figma"></i> Figma</span>
-              <span class="tech-tag"><i class="fa-brands fa-git-alt"></i> Git</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero Visual / Profile Image Card -->
-        <div class="hero-visual">
-          <div class="profile-card">
-            <div class="profile-glow"></div>
-            <div class="profile-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
-                alt="Foto Profil Rizky Pratama" class="profile-image" id="profile-img">
-            </div>
-
-            <!-- Floating Micro Badges -->
-            <div class="floating-badge badge-code">
-              <i class="fa-solid fa-code"></i>
-              <div>
-                <strong>Clean Code</strong>
-                <small>HTML5 & CSS3 Standard</small>
-              </div>
-            </div>
-
-            <div class="floating-badge badge-design">
-              <i class="fa-solid fa-mobile-screen-button"></i>
-              <div>
-                <strong>100% Responsif</strong>
-                <small>Semua Ukuran Layar</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ================= NEUBRUTALISM TICKER BANNER ================= -->
-    <div class="ticker-banner" aria-hidden="true">
-      <div class="ticker-track">
-        <span class="ticker-item">✦ WEB DEVELOPER</span>
-        <span class="ticker-item">★ FRONTEND SPECIALIST</span>
-        <span class="ticker-item">✦ UI/UX ENTHUSIAST</span>
-        <span class="ticker-item">★ CLEAN & ACCESSIBLE CODE</span>
-        <span class="ticker-item">✦ HIGH PERFORMANCE</span>
-        <span class="ticker-item">★ 100% RESPONSIVE</span>
-        <span class="ticker-item">✦ OPEN FOR COLLABORATION</span>
-        <span class="ticker-item">★ PIXEL PERFECT</span>
-        <span class="ticker-item">✦ WEB DEVELOPER</span>
-        <span class="ticker-item">★ FRONTEND SPECIALIST</span>
-        <span class="ticker-item">✦ UI/UX ENTHUSIAST</span>
-        <span class="ticker-item">★ CLEAN & ACCESSIBLE CODE</span>
-        <span class="ticker-item">✦ HIGH PERFORMANCE</span>
-        <span class="ticker-item">★ 100% RESPONSIVE</span>
-        <span class="ticker-item">✦ OPEN FOR COLLABORATION</span>
-        <span class="ticker-item">★ PIXEL PERFECT</span>
-      </div>
-    </div>
-
-    <!-- ================= EDUCATION & EXPERIENCE SECTION ================= -->
-    <section class="section section-alt" id="experience">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag"><i class="fa-solid fa-briefcase"></i> Rekam Jejak</span>
-          <h2 class="section-title">Pendidikan & Pengalaman</h2>
-          <p class="section-subtitle">
-            Kombinasi latar belakang akademik di bidang teknologi dan keterlibatan aktif dalam proyek nyata serta
-            organisasi.
-          </p>
-        </div>
-
-        <div class="experience-grid">
-
-          <!-- Column 1: Riwayat Pendidikan -->
-          <div class="timeline-column">
-            <div class="column-header">
-              <div class="column-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-              <h3>Riwayat Pendidikan</h3>
-            </div>
-
-            <div class="timeline">
-              <!-- Item 1 -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <div class="timeline-period">
-                    <i class="fa-regular fa-calendar"></i> 2022 - Sekarang (Aktif)
-                  </div>
-                  <h4 class="timeline-title">S1 Sistem Informasi</h4>
-                  <p class="timeline-institution">Universitas Indonesia / Institut Teknologi</p>
-                  <p class="timeline-description">
-                    Mempelajari Rekayasa Perangkat Lunak, Basis Data Relasional, Desain Interaksi Manusia & Komputer
-                    (HCI), serta Manajemen Proyek Teknologi Informasi. IPK: 3.82 / 4.00.
-                  </p>
-                  <div class="timeline-tags">
-                    <span>Web Development</span>
-                    <span>Database System</span>
-                    <span>System Analysis</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Item 2 -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <div class="timeline-period">
-                    <i class="fa-regular fa-calendar"></i> 2019 - 2022 (Lulus)
-                  </div>
-                  <h4 class="timeline-title">Rekayasa Perangkat Lunak (RPL)</h4>
-                  <p class="timeline-institution">SMK Negeri Jurusan Informatika</p>
-                  <p class="timeline-description">
-                    Fokus dasar pemrograman algoritma, dasar web (HTML, CSS, JavaScript dasar), pengelolaan database
-                    MySQL, serta pembuatan antarmuka pengguna sederhana.
-                  </p>
-                  <div class="timeline-tags">
-                    <span>Dasar Pemrograman</span>
-                    <span>Frontend Dasar</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Item 3: Pelatihan / Sertifikasi -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <div class="timeline-period">
-                    <i class="fa-regular fa-calendar"></i> 2023 - 2024
-                  </div>
-                  <h4 class="timeline-title">Studi Independen: Front-End Web Specialist</h4>
-                  <p class="timeline-institution">Platform Pembelajaran Digital & Sertifikasi</p>
-                  <p class="timeline-description">
-                    Menyelesaikan kurikulum intensif pembuatan aplikasi web modern responsif, integrasi Web API, dan
-                    best practices UI/UX modern.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Column 2: Pengalaman (Kerja / Organisasi / Proyek) -->
-          <div class="timeline-column">
-            <div class="column-header">
-              <div class="column-icon"><i class="fa-solid fa-laptop-code"></i></div>
-              <h3>Pengalaman Kerja & Organisasi</h3>
-            </div>
-
-            <div class="timeline">
-              <!-- Experience 1 -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <div class="timeline-period">
-                    <i class="fa-regular fa-calendar"></i> 2024 - Sekarang
-                  </div>
-                  <h4 class="timeline-title">Frontend Developer (Freelance / Project-Based)</h4>
-                  <p class="timeline-institution">Digital Studio / Klien Mandiri</p>
-                  <ul class="timeline-bullets">
-                    <li>Mengembangkan landing page responsif berbasis HTML5, CSS3 murni, dan JavaScript untuk 5+ UMKM.
-                    </li>
-                    <li>Mengoptimalkan kecepatan loading website hingga mencapai skor Google PageSpeed di atas 90+.</li>
-                    <li>Mengubah desain wireframe dan prototipe Figma menjadi kode web yang rapi dan pixel-perfect.</li>
-                  </ul>
-                  <div class="timeline-tags">
-                    <span>Responsive Layout</span>
-                    <span>Performance</span>
-                    <span>Client Collaboration</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Experience 2 -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <div class="timeline-period">
-                    <i class="fa-regular fa-calendar"></i> 2023 - 2024
-                  </div>
-                  <h4 class="timeline-title">Koordinator Divisi IT & Desain</h4>
-                  <p class="timeline-institution">Himpunan Mahasiswa Sistem Informasi (HIMSISFO)</p>
-                  <ul class="timeline-bullets">
-                    <li>Memimpin tim beranggotakan 6 orang dalam merancang publikasi digital, website kepanitiaan
-                      seminar, dan media informasi.</li>
-                    <li>Mengelola perilisan website acara tahunan yang dikunjungi lebih dari 1.500+ peserta.</li>
-                  </ul>
-                  <div class="timeline-tags">
-                    <span>Leadership</span>
-                    <span>Team Management</span>
-                    <span>Event Website</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Experience 3 -->
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                  <div class="timeline-period">
-                    <i class="fa-regular fa-calendar"></i> 2023
-                  </div>
-                  <h4 class="timeline-title">Junior Web Contributor (Proyek Akademik)</h4>
-                  <p class="timeline-institution">Laboratorium Komputasi Kampus</p>
-                  <ul class="timeline-bullets">
-                    <li>Membantu merancang antarmuka sistem absensi dan inventaris laboratorium berbasis web.</li>
-                    <li>Menulis dokumentasi teknis dan panduan penggunaan sistem bagi mahasiswa pengguna lab.</li>
-                  </ul>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= PROJECTS SECTION ================= -->
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag"><i class="fa-solid fa-code-fork"></i> Portofolio Hasil Karya</span>
-          <h2 class="section-title">Katalog Proyek Unggulan</h2>
-          <p class="section-subtitle">
-            Daftar aplikasi web dan desain yang telah saya bangun dengan fokus pada fungsionalitas, performa, dan
-            pengalaman visual.
-          </p>
-        </div>
-
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-
-          <!-- Project 1 -->
-          <article class="project-card">
-            <div class="project-media">
-              <div class="project-preview-mockup bg-mockup-1">
-                <div class="mockup-header">
-                  <span class="mockup-dot red"></span>
-                  <span class="mockup-dot yellow"></span>
-                  <span class="mockup-dot green"></span>
-                  <span class="mockup-address">https://e-katalog.umkm.id</span>
-                </div>
-                <div class="mockup-body">
-                  <i class="fa-solid fa-shop mockup-icon"></i>
-                  <span>E-Commerce & Katalog Produk UMKM</span>
-                </div>
-              </div>
-              <span class="project-category">Web Application</span>
-            </div>
-
-            <div class="project-body">
-              <h3 class="project-title">Katalog Digital & Pemesanan Produk UMKM</h3>
-              <p class="project-description">
-                Website showcase dan pemesanan produk kerajinan lokal dengan fitur filter kategori, keranjang belanja
-                interaktif, kalkulator ongkir sederhana, serta tombol pesan langsung ke WhatsApp penjual.
-              </p>
-
-              <div class="project-tech-list">
-                <span class="tech-pill">HTML5</span>
-                <span class="tech-pill">CSS3 Flexbox</span>
-                <span class="tech-pill">JavaScript</span>
-                <span class="tech-pill">WhatsApp API</span>
-              </div>
-
-              <div class="project-actions">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                  <i class="fa-brands fa-github"></i> Repository
-                </a>
-                <a href="#" class="btn btn-primary btn-sm project-demo-btn" data-project="Katalog Digital UMKM">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo Langsung
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="project-card">
-            <div class="project-media">
-              <div class="project-preview-mockup bg-mockup-2">
-                <div class="mockup-header">
-                  <span class="mockup-dot red"></span>
-                  <span class="mockup-dot yellow"></span>
-                  <span class="mockup-dot green"></span>
-                  <span class="mockup-address">https://dashboard-akademik.univ.id</span>
-                </div>
-                <div class="mockup-body">
-                  <i class="fa-solid fa-chart-line mockup-icon"></i>
-                  <span>Portal Sistem Informasi Akademik</span>
-                </div>
-              </div>
-              <span class="project-category">Fullstack System</span>
-            </div>
-
-            <div class="project-body">
-              <h3 class="project-title">Dashboard Sistem Informasi Nilai & Jadwal</h3>
-              <p class="project-description">
-                Sistem informasi akademik berbasis web untuk mempermudah mahasiswa memantau jadwal kuliah harian,
-                rekapitulasi nilai IPK, dan pengajuan kartu rencana studi secara terstruktur.
-              </p>
-
-              <div class="project-tech-list">
-                <span class="tech-pill">HTML5</span>
-                <span class="tech-pill">CSS3 Grid</span>
-                <span class="tech-pill">PHP</span>
-                <span class="tech-pill">MySQL</span>
-              </div>
-
-              <div class="project-actions">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                  <i class="fa-brands fa-github"></i> Repository
-                </a>
-                <a href="#" class="btn btn-primary btn-sm project-demo-btn" data-project="Dashboard Akademik">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo Langsung
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article class="project-card">
-            <div class="project-media">
-              <div class="project-preview-mockup bg-mockup-3">
-                <div class="mockup-header">
-                  <span class="mockup-dot red"></span>
-                  <span class="mockup-dot yellow"></span>
-                  <span class="mockup-dot green"></span>
-                  <span class="mockup-address">https://task-flow.app</span>
-                </div>
-                <div class="mockup-body">
-                  <i class="fa-solid fa-list-check mockup-icon"></i>
-                  <span>Aplikasi Manajemen Tugas (Task Flow)</span>
-                </div>
-              </div>
-              <span class="project-category">Productivity Tool</span>
-            </div>
-
-            <div class="project-body">
-              <h3 class="project-title">Aplikasi Web Manajemen Tugas & Jadwal</h3>
-              <p class="project-description">
-                Aplikasi manajemen tugas produktivitas ringan dengan fitur drag-and-drop kolom Kanban (To Do, In
-                Progress, Done), penyimpanan lokal (LocalStorage), dan filter deadline tugas.
-              </p>
-
-              <div class="project-tech-list">
-                <span class="tech-pill">HTML5</span>
-                <span class="tech-pill">CSS3 Modern</span>
-                <span class="tech-pill">JavaScript ES6</span>
-                <span class="tech-pill">LocalStorage</span>
-              </div>
-
-              <div class="project-actions">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                  <i class="fa-brands fa-github"></i> Repository
-                </a>
-                <a href="#" class="btn btn-primary btn-sm project-demo-btn" data-project="Task Flow App">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo Langsung
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 4 -->
-          <article class="project-card">
-            <div class="project-media">
-              <div class="project-preview-mockup bg-mockup-4">
-                <div class="mockup-header">
-                  <span class="mockup-dot red"></span>
-                  <span class="mockup-dot yellow"></span>
-                  <span class="mockup-dot green"></span>
-                  <span class="mockup-address">https://event-himasi.org</span>
-                </div>
-                <div class="mockup-body">
-                  <i class="fa-solid fa-calendar-star mockup-icon"></i>
-                  <span>Landing Page Seminar Nasional IT</span>
-                </div>
-              </div>
-              <span class="project-category">Landing Page</span>
-            </div>
-
-            <div class="project-body">
-              <h3 class="project-title">Website Resmi Seminar & Workshop Nasional</h3>
-              <p class="project-description">
-                Landing page interaktif untuk promosi acara teknologi dengan hitung mundur (countdown timer), jadwal
-                sesi interaktif, registrasi peserta, dan layout yang 100% responsif di smartphone.
-              </p>
-
-              <div class="project-tech-list">
-                <span class="tech-pill">HTML5</span>
-                <span class="tech-pill">CSS3 Animations</span>
-                <span class="tech-pill">JavaScript</span>
-                <span class="tech-pill">Figma UI/UX</span>
-              </div>
-
-              <div class="project-actions">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                  <i class="fa-brands fa-github"></i> Repository
-                </a>
-                <a href="#" class="btn btn-primary btn-sm project-demo-btn" data-project="Landing Page Seminar IT">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo Langsung
-                </a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CONTACT & SOCIAL MEDIA SECTION ================= -->
-    <section class="section section-alt" id="contact">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag"><i class="fa-regular fa-handshake"></i> Mari Terhubung</span>
-          <h2 class="section-title">Kontak & Media Sosial</h2>
-          <p class="section-subtitle">
-            Tertarik untuk berkolaborasi dalam proyek web, merekrut magang/karyawan, atau sekadar berdiskusi santai?
-            Jangan ragu untuk menghubungi saya!
-          </p>
-        </div>
-
-        <div class="contact-wrapper">
-
-          <!-- Contact Details & Social Links -->
-          <div class="contact-info-card">
-            <h3 class="contact-card-title">Informasi Kontak</h3>
-            <p class="contact-card-desc">
-              Silakan hubungi saya melalui jalur komunikasi berikut atau kirim pesan langsung melalui formulir di
-              samping.
-            </p>
-
-            <div class="contact-methods">
-              <!-- Item Email -->
-              <a href="mailto:rizky.pratama.dev@email.com" class="contact-method-item">
-                <div class="method-icon">
-                  <i class="fa-solid fa-envelope"></i>
-                </div>
-                <div class="method-content">
-                  <span class="method-label">Alamat Email</span>
-                  <span class="method-value">rizky.pratama.dev@email.com</span>
-                </div>
-              </a>
-
-              <!-- Item WhatsApp -->
-              <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
-                class="contact-method-item">
-                <div class="method-icon whatsapp">
-                  <i class="fa-brands fa-whatsapp"></i>
-                </div>
-                <div class="method-content">
-                  <span class="method-label">WhatsApp / Telepon</span>
-                  <span class="method-value">+62 812-3456-7890</span>
-                </div>
-              </a>
-
-              <!-- Item Domisili -->
-              <div class="contact-method-item">
-                <div class="method-icon location">
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div class="method-content">
-                  <span class="method-label">Domisili</span>
-                  <span class="method-value">Jakarta / Depok, Indonesia</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Social Media Profiles -->
-            <div class="social-profiles-box">
-              <h4 class="social-heading">Media Sosial & Jaringan Profesional</h4>
-              <div class="social-links">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link linkedin"
-                  aria-label="LinkedIn Profile">
-                  <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link github"
-                  aria-label="GitHub Profile">
-                  <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link instagram"
-                  aria-label="Instagram Profile">
-                  <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link twitter"
-                  aria-label="Twitter Profile">
-                  <i class="fa-brands fa-x-twitter"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contact Form -->
-          <div class="contact-form-card">
-            <h3 class="contact-card-title">Kirim Pesan Langsung</h3>
-            <p class="contact-card-desc">
-              Saya akan berusaha merespons pesan Anda dalam waktu 1x24 jam kerja.
-            </p>
-
-            <form id="contact-form" class="contact-form" novalidate>
-              <div class="form-group">
-                <label for="name" class="form-label">Nama Lengkap <span class="required">*</span></label>
-                <div class="input-wrapper">
-                  <i class="fa-regular fa-user input-icon"></i>
-                  <input type="text" id="name" name="name" class="form-input" placeholder="Masukkan nama Anda" required>
-                </div>
-                <span class="input-error" id="name-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="email" class="form-label">Alamat Email <span class="required">*</span></label>
-                <div class="input-wrapper">
-                  <i class="fa-regular fa-envelope input-icon"></i>
-                  <input type="email" id="email" name="email" class="form-input" placeholder="contoh: email@anda.com"
-                    required>
-                </div>
-                <span class="input-error" id="email-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="subject" class="form-label">Subjek Pesan <span class="required">*</span></label>
-                <div class="input-wrapper">
-                  <i class="fa-solid fa-tag input-icon"></i>
-                  <input type="text" id="subject" name="subject" class="form-input"
-                    placeholder="Peluang Kerja / Proyek Freelance / Diskusi" required>
-                </div>
-                <span class="input-error" id="subject-error"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="message" class="form-label">Isi Pesan <span class="required">*</span></label>
-                <div class="input-wrapper textarea-wrapper">
-                  <i class="fa-regular fa-comment-dots input-icon"></i>
-                  <textarea id="message" name="message" rows="4" class="form-input"
-                    placeholder="Tuliskan detail pesan atau pertanyaan Anda di sini..." required></textarea>
-                </div>
-                <span class="input-error" id="message-error"></span>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-block" id="btn-submit">
-                <i class="fa-solid fa-paper-plane"></i> Kirimkan Pesan
-              </button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-left">
-        <a href="#about" class="footer-logo">
-          <span class="logo-badge">&lt;/&gt;</span> Rizky<span>.dev</span>
+  <!-- ================= MOBILE NAVIGATION DRAWER & BACKDROP ================= -->
+  <div id="drawer-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  
+  <div id="mobile-drawer" class="fixed top-0 right-0 w-72 max-w-[85vw] h-full bg-white dark:bg-darkCard shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-slate-100 dark:border-slate-800">
+        <a href="#hero" class="flex items-center gap-2 font-extrabold text-lg text-slate-900 dark:text-white">
+          <span class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center font-mono text-sm">&lt;/&gt;</span>
+          <span>Khusna<span class="text-brand-600">.dev</span></span>
         </a>
-        <p class="footer-tagline">
-          Membangun antarmuka web modern dengan kode yang bersih, terstruktur, dan responsif.
-        </p>
+        <button type="button" id="close-drawer-btn" class="p-2 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white" aria-label="Tutup menu">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
       </div>
 
-      <div class="footer-right">
-        <div class="footer-nav">
-          <a href="#about">Tentang</a>
-          <a href="#experience">Pengalaman</a>
-          <a href="#projects">Proyek</a>
-          <a href="#contact">Kontak</a>
-        </div>
-        <p class="footer-copyright">
-          &copy; 2026 <strong>Rizky Pratama</strong>. Dibuat dengan HTML5 & CSS3. Hak Cipta Dilindungi.
-        </p>
-      </div>
+      <nav class="mt-6 flex flex-col space-y-3">
+        <a href="#hero" class="drawer-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 font-medium transition-colors">
+          <i class="fa-solid fa-house text-brand-500 w-5"></i> Beranda
+        </a>
+        <a href="#about" class="drawer-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 font-medium transition-colors">
+          <i class="fa-solid fa-user text-brand-500 w-5"></i> Tentang Saya
+        </a>
+        <a href="#skills" class="drawer-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 font-medium transition-colors">
+          <i class="fa-solid fa-code text-brand-500 w-5"></i> Keahlian
+        </a>
+        <a href="#projects" class="drawer-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 font-medium transition-colors">
+          <i class="fa-solid fa-layer-group text-brand-500 w-5"></i> Portofolio
+        </a>
+        <a href="#contact" class="drawer-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 font-medium transition-colors">
+          <i class="fa-solid fa-envelope text-brand-500 w-5"></i> Kontak
+        </a>
+      </nav>
     </div>
-  </footer>
 
-  <!-- Back To Top Floating Button -->
-  <a href="#about" class="back-to-top" id="back-to-top" aria-label="Kembali ke atas">
-    <i class="fa-solid fa-arrow-up"></i>
-  </a>
-
-  <!-- Toast Notification Feedback Container -->
-  <div class="toast-notification" id="toast-notification">
-    <i class="fa-solid fa-circle-check toast-icon"></i>
-    <div class="toast-body">
-      <strong id="toast-title">Pesan Terkirim!</strong>
-      <p id="toast-message">Terima kasih atas pesannya, saya akan segera menghubungi Anda kembali.</p>
+    <div class="pt-6 border-t border-slate-100 dark:border-slate-800 space-y-4">
+      <a href="#contact" class="drawer-link w-full py-3 px-4 rounded-xl font-semibold text-center text-white bg-brand-600 hover:bg-brand-700 block shadow-md">
+        Mulai Diskusi Proyek
+      </a>
+      <p class="text-xs text-center text-slate-400">&copy; 2026 Khamidatul Khusna</p>
     </div>
   </div>
 
-  <!-- Custom JavaScript -->
+  <main class="pt-20">
+
+    <!-- ================= 1. HERO SECTION ================= -->
+    <section id="hero" class="relative min-h-[calc(100vh-5rem)] flex items-center py-16 lg:py-24 overflow-hidden">
+      <!-- Background Ambient Glow Orbs -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-500/15 dark:bg-brand-500/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+      <div class="absolute bottom-10 right-10 w-80 h-80 bg-cyan-400/10 dark:bg-cyan-500/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Hero Text Content (Left Column) -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            
+            <!-- Availability Badge -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold tracking-wide">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 pulse-available"></span>
+              <span>Tersedia untuk Magang, Pekerjaan & Proyek Baru</span>
+            </div>
+
+            <!-- Main Headline -->
+            <div class="space-y-2">
+              <p class="text-base sm:text-lg font-medium text-slate-500 dark:text-slate-400">
+                Halo semua 👋, perkenalkan saya
+              </p>
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+                <span class="text-gradient">Khamidatul Khusna</span>
+              </h1>
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-700 dark:text-slate-300">
+                Frontend Web Developer <span class="text-brand-600 dark:text-brand-400">&amp; UI/UX Enthusiast</span>
+              </h2>
+            </div>
+
+            <!-- Professional Summary / Bio -->
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+              Membangun pengalaman web yang bersih, interaktif, dan berorientasi pada kepuasan pengguna. Saya memadukan keindahan visual desain antarmuka dengan efisiensi kode terstruktur menggunakan teknologi web modern.
+            </p>
+
+            <!-- Quick Stats Section with Counter Animation -->
+            <div id="hero-stats" class="grid grid-cols-3 gap-3 sm:gap-6 pt-2 max-w-lg mx-auto lg:mx-0">
+              <div class="p-4 rounded-2xl glass-card text-center sm:text-left shadow-sm hover:shadow-md transition-shadow">
+                <div class="text-2xl sm:text-3xl font-extrabold text-brand-600 dark:text-brand-400 stat-number" data-target="3" data-suffix="+">
+                  0+
+                </div>
+                <div class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
+                  Tahun Belajar & Praktik
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl glass-card text-center sm:text-left shadow-sm hover:shadow-md transition-shadow">
+                <div class="text-2xl sm:text-3xl font-extrabold text-brand-600 dark:text-brand-400 stat-number" data-target="15" data-suffix="+">
+                  0+
+                </div>
+                <div class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
+                  Proyek Selesai
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl glass-card text-center sm:text-left shadow-sm hover:shadow-md transition-shadow">
+                <div class="text-2xl sm:text-3xl font-extrabold text-brand-600 dark:text-brand-400 stat-number" data-target="100" data-suffix="%">
+                  0%
+                </div>
+                <div class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
+                  Dedikasi & Komitmen
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons (CTA) -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+              <a href="#projects" class="px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base text-white bg-brand-600 hover:bg-brand-700 shadow-lg shadow-brand-500/25 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Lihat Portofolio</span>
+              </a>
+
+              <a href="#contact" class="px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-sm">
+                <i class="fa-regular fa-comment-dots text-brand-500"></i>
+                <span>Hubungi Saya</span>
+              </a>
+
+              <a href="#about" class="px-5 py-3.5 rounded-xl font-semibold text-sm sm:text-base text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800/80 hover:bg-brand-50 dark:hover:bg-brand-950/40 transition-all flex items-center gap-2" title="Unduh Curriculum Vitae">
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <span>Unduh CV</span>
+              </a>
+            </div>
+
+            <!-- Social Media Quick Links -->
+            <div class="pt-3 flex items-center justify-center lg:justify-start gap-3">
+              <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider mr-2">Temukan Saya:</span>
+              
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 transition-all flex items-center justify-center shadow-sm" aria-label="GitHub">
+                <i class="fa-brands fa-github text-lg"></i>
+              </a>
+
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 transition-all flex items-center justify-center shadow-sm" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in text-lg"></i>
+              </a>
+
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 transition-all flex items-center justify-center shadow-sm" aria-label="Instagram">
+                <i class="fa-brands fa-instagram text-lg"></i>
+              </a>
+
+              <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 transition-all flex items-center justify-center shadow-sm" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Hero Visual & Floating Micro-badges (Right Column) -->
+          <div class="lg:col-span-5 flex justify-center items-center relative">
+            <div class="relative w-72 sm:w-88 lg:w-96 aspect-square flex items-center justify-center">
+              
+              <!-- Radiant Circular Background -->
+              <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-brand-600 via-indigo-400 to-cyan-400 opacity-20 blur-2xl glow-primary"></div>
+              
+              <!-- Main Profile Frame Card -->
+              <div class="relative w-full h-full rounded-3xl p-3 bg-gradient-to-tr from-brand-500/30 via-slate-200/50 to-cyan-500/30 dark:from-brand-500/40 dark:via-slate-800/40 dark:to-cyan-500/40 backdrop-blur-md shadow-2xl flex items-center justify-center overflow-hidden border border-white/40 dark:border-slate-700/60">
+                <img 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" 
+                  alt="Foto Profil Khamidatul Khusna"
+                  class="w-full h-full object-cover object-center rounded-2xl shadow-inner transition-transform duration-500 hover:scale-105"
+                  loading="lazy">
+                
+                <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-slate-950/80 via-slate-950/40 to-transparent text-white rounded-b-2xl">
+                  <div class="text-sm font-bold flex items-center gap-1.5">
+                    <span>Khamidatul Khusna</span>
+                    <i class="fa-solid fa-circle-check text-cyan-400 text-xs"></i>
+                  </div>
+                  <p class="text-xs text-slate-300">Web Developer &amp; UI Designer</p>
+                </div>
+              </div>
+
+              <!-- Floating Micro-badge 1: React / UI -->
+              <div class="absolute -top-4 -left-4 sm:-left-6 px-3.5 py-2 rounded-2xl glass-card shadow-xl border border-white/60 dark:border-slate-700 flex items-center gap-2.5 animate-float-1 z-10">
+                <span class="w-8 h-8 rounded-lg bg-sky-50 dark:bg-sky-950/80 text-sky-500 flex items-center justify-center text-base">
+                  <i class="fa-brands fa-react"></i>
+                </span>
+                <div class="text-left">
+                  <p class="text-[10px] uppercase font-bold text-slate-400">Framework</p>
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100">React.js</p>
+                </div>
+              </div>
+
+              <!-- Floating Micro-badge 2: Tailwind CSS -->
+              <div class="absolute -bottom-4 -left-3 sm:-left-5 px-3.5 py-2 rounded-2xl glass-card shadow-xl border border-white/60 dark:border-slate-700 flex items-center gap-2.5 animate-float-2 z-10">
+                <span class="w-8 h-8 rounded-lg bg-cyan-50 dark:bg-cyan-950/80 text-cyan-500 flex items-center justify-center text-base">
+                  <i class="fa-solid fa-wind"></i>
+                </span>
+                <div class="text-left">
+                  <p class="text-[10px] uppercase font-bold text-slate-400">Styling</p>
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100">Tailwind CSS</p>
+                </div>
+              </div>
+
+              <!-- Floating Micro-badge 3: Figma Design -->
+              <div class="absolute top-1/3 -right-5 sm:-right-7 px-3.5 py-2 rounded-2xl glass-card shadow-xl border border-white/60 dark:border-slate-700 flex items-center gap-2.5 animate-float-3 z-10">
+                <span class="w-8 h-8 rounded-lg bg-purple-50 dark:bg-purple-950/80 text-purple-500 flex items-center justify-center text-base">
+                  <i class="fa-brands fa-figma"></i>
+                </span>
+                <div class="text-left">
+                  <p class="text-[10px] uppercase font-bold text-slate-400">UI/UX Tool</p>
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100">Figma Pro</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 2. ABOUT ME SECTION ================= -->
+    <section id="about" class="py-20 lg:py-28 bg-white/60 dark:bg-darkCard/50 border-y border-slate-200/80 dark:border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span class="px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-brand-100 text-brand-700 dark:bg-brand-950/80 dark:text-brand-300">
+            Mengenal Saya Lebih Dekat
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+            Tentang <span class="text-gradient">Profil &amp; Filosofi Kerja</span>
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg">
+            Kombinasi antara rasa ingin tahu yang tinggi, kedisiplinan kode bersih, dan kepedulian mendalam terhadap kemudahan pengguna.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Detailed Biography (Left Side) -->
+          <div class="lg:col-span-5 space-y-6">
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+              Mengubah Ide Abstrak Menjadi Produk Digital yang Fungsional
+            </h3>
+            
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+              Saya adalah seorang pengembang web frontend yang antusias dalam merancang serta mengimplementasikan antarmuka interaktif. Saya meyakini bahwa tampilan visual yang indah harus selalu diimbangi oleh struktur kode yang teratur, aksesibilitas ramah pengguna, dan kecepatan muat optimal.
+            </p>
+
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+              Selama perjalanan pembelajaran dan pengerjaan berbagai proyek nyata, saya terbiasa berkolaborasi dengan tim lintas disiplin, mulai dari riset kebutuhan pengguna (*user research*), perancangan wireframe di Figma, hingga implementasi kode modular siap pakai.
+            </p>
+
+            <!-- Personal Trait Key Information -->
+            <div class="pt-4 border-t border-slate-200 dark:border-slate-800 grid grid-cols-2 gap-4">
+              <div>
+                <span class="text-xs uppercase text-slate-400 font-semibold">Minat Spesialisasi</span>
+                <p class="font-bold text-slate-800 dark:text-slate-200 mt-0.5">Frontend &amp; UI/UX</p>
+              </div>
+              <div>
+                <span class="text-xs uppercase text-slate-400 font-semibold">Domisili</span>
+                <p class="font-bold text-slate-800 dark:text-slate-200 mt-0.5">Indonesia (WIB)</p>
+              </div>
+              <div>
+                <span class="text-xs uppercase text-slate-400 font-semibold">Bahasa</span>
+                <p class="font-bold text-slate-800 dark:text-slate-200 mt-0.5">Bahasa Indonesia, Inggris</p>
+              </div>
+              <div>
+                <span class="text-xs uppercase text-slate-400 font-semibold">Status Kerja</span>
+                <p class="font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">Available for Hire</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Structured Cards: 4 Core Values (Right Side) -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+            
+            <!-- Card 1: Clean Code -->
+            <div class="p-6 rounded-2xl glass-card hover:border-brand-500/50 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md space-y-3">
+              <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 dark:text-white">Clean &amp; Readable Code</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Menulis kode semantik, terstruktur rapi, dan mudah dikembangkan (*maintainable*) oleh tim sesuai standar industri web.
+              </p>
+            </div>
+
+            <!-- Card 2: User-Centered Design -->
+            <div class="p-6 rounded-2xl glass-card hover:border-brand-500/50 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md space-y-3">
+              <div class="w-12 h-12 rounded-xl bg-cyan-50 dark:bg-cyan-950/80 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 dark:text-white">User-Centered UI/UX</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Fokus mendalam pada hierarki visual, kenyamanan interaksi, aksesibilitas warna, dan kelancaran navigasi pengguna.
+              </p>
+            </div>
+
+            <!-- Card 3: Problem Solver -->
+            <div class="p-6 rounded-2xl glass-card hover:border-brand-500/50 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md space-y-3">
+              <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-lightbulb"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 dark:text-white">Problem Solving Mindset</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Cepat membedah kendala teknis dan menemukan solusi efektif untuk menghasilkan performa web yang responsif dan tangguh.
+              </p>
+            </div>
+
+            <!-- Card 4: Continuous Learning & Collaboration -->
+            <div class="p-6 rounded-2xl glass-card hover:border-brand-500/50 transition-all hover:-translate-y-1 shadow-sm hover:shadow-md space-y-3">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-users-gear"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 dark:text-white">Continuous Growth</h4>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Selalu antusias mempelajari teknologi baru dan aktif berkomunikasi dalam kerja tim yang dinamis dan solutif.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 3. SKILLS SECTION ================= -->
+    <section id="skills" class="py-20 lg:py-28">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span class="px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-brand-100 text-brand-700 dark:bg-brand-950/80 dark:text-brand-300">
+            Kapasitas &amp; Penguasaan Alat
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+            Keahlian <span class="text-gradient">Teknis &amp; Alat Pengembangan</span>
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg">
+            Kumpulan teknologi yang secara aktif saya gunakan dalam memproduksi solusi web interaktif dari awal hingga siap tayang.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Column 1: Animated Progress Bars for Technical Skills -->
+          <div class="lg:col-span-6 p-8 rounded-3xl glass-card shadow-sm space-y-6">
+            <div class="flex items-center gap-3 pb-3 border-b border-slate-100 dark:border-slate-800">
+              <span class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-code"></i>
+              </span>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Technical Skills</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Penguasaan bahasa pemrograman &amp; frontend</p>
+              </div>
+            </div>
+
+            <!-- Skill 1: HTML5 & Semantic Elements -->
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm font-semibold text-slate-800 dark:text-slate-200">
+                <span class="flex items-center gap-2">
+                  <i class="fa-brands fa-html5 text-orange-500"></i> HTML5 &amp; Semantic Web
+                </span>
+                <span>95%</span>
+              </div>
+              <div class="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-orange-500 to-amber-500 rounded-full skill-bar-fill" data-progress="95"></div>
+              </div>
+            </div>
+
+            <!-- Skill 2: CSS3 & Modern Layouts -->
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm font-semibold text-slate-800 dark:text-slate-200">
+                <span class="flex items-center gap-2">
+                  <i class="fa-brands fa-css3-alt text-blue-500"></i> CSS3 (Flexbox, Grid, Animations)
+                </span>
+                <span>92%</span>
+              </div>
+              <div class="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full skill-bar-fill" data-progress="92"></div>
+              </div>
+            </div>
+
+            <!-- Skill 3: Tailwind CSS -->
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm font-semibold text-slate-800 dark:text-slate-200">
+                <span class="flex items-center gap-2">
+                  <i class="fa-solid fa-wind text-cyan-400"></i> Tailwind CSS
+                </span>
+                <span>90%</span>
+              </div>
+              <div class="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-cyan-400 to-teal-500 rounded-full skill-bar-fill" data-progress="90"></div>
+              </div>
+            </div>
+
+            <!-- Skill 4: JavaScript (ES6+) -->
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm font-semibold text-slate-800 dark:text-slate-200">
+                <span class="flex items-center gap-2">
+                  <i class="fa-brands fa-js text-yellow-400"></i> JavaScript (ES6+, DOM, Fetch API)
+                </span>
+                <span>86%</span>
+              </div>
+              <div class="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full skill-bar-fill" data-progress="86"></div>
+              </div>
+            </div>
+
+            <!-- Skill 5: React.js -->
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm font-semibold text-slate-800 dark:text-slate-200">
+                <span class="flex items-center gap-2">
+                  <i class="fa-brands fa-react text-sky-400"></i> React.js &amp; Component Lifecycle
+                </span>
+                <span>80%</span>
+              </div>
+              <div class="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-sky-400 to-brand-600 rounded-full skill-bar-fill" data-progress="80"></div>
+              </div>
+            </div>
+
+            <!-- Skill 6: Git & Version Control -->
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm font-semibold text-slate-800 dark:text-slate-200">
+                <span class="flex items-center gap-2">
+                  <i class="fa-brands fa-git-alt text-red-500"></i> Git &amp; GitHub Version Control
+                </span>
+                <span>85%</span>
+              </div>
+              <div class="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-red-500 to-pink-500 rounded-full skill-bar-fill" data-progress="85"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Column 2: Tools & Frameworks Interactive Badges -->
+          <div class="lg:col-span-6 p-8 rounded-3xl glass-card shadow-sm space-y-6">
+            <div class="flex items-center gap-3 pb-3 border-b border-slate-100 dark:border-slate-800">
+              <span class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-toolbox"></i>
+              </span>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Tools &amp; Ekosistem</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Peralatan desain &amp; pendukung produktivitas</p>
+              </div>
+            </div>
+
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Berikut adalah perangkat lunak, pustaka, dan alur kerja yang saya gunakan sehari-hari untuk mendesain, menguji, dan merilis aplikasi web berkualitas:
+            </p>
+
+            <!-- Interactive Badges Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5 pt-2">
+              
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 hover:border-brand-500 dark:hover:border-brand-500 hover:shadow-md hover:-translate-y-1 transition-all flex items-center gap-3 cursor-default group">
+                <i class="fa-brands fa-figma text-2xl text-purple-500 group-hover:scale-110 transition-transform"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100">Figma</h4>
+                  <span class="text-[10px] text-slate-500 dark:text-slate-400">UI/UX Design</span>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 hover:border-brand-500 dark:hover:border-brand-500 hover:shadow-md hover:-translate-y-1 transition-all flex items-center gap-3 cursor-default group">
+                <i class="fa-solid fa-code text-2xl text-blue-500 group-hover:scale-110 transition-transform"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100">VS Code</h4>
+                  <span class="text-[10px] text-slate-500 dark:text-slate-400">Code Editor</span>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 hover:border-brand-500 dark:hover:border-brand-500 hover:shadow-md hover:-translate-y-1 transition-all flex items-center gap-3 cursor-default group">
+                <i class="fa-solid fa-bolt text-2xl text-amber-400 group-hover:scale-110 transition-transform"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100">Vite</h4>
+                  <span class="text-[10px] text-slate-500 dark:text-slate-400">Build Tool</span>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 hover:border-brand-500 dark:hover:border-brand-500 hover:shadow-md hover:-translate-y-1 transition-all flex items-center gap-3 cursor-default group">
+                <i class="fa-solid fa-network-wired text-2xl text-emerald-500 group-hover:scale-110 transition-transform"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100">REST API</h4>
+                  <span class="text-[10px] text-slate-500 dark:text-slate-400">Integration</span>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 hover:border-brand-500 dark:hover:border-brand-500 hover:shadow-md hover:-translate-y-1 transition-all flex items-center gap-3 cursor-default group">
+                <i class="fa-solid fa-database text-2xl text-indigo-500 group-hover:scale-110 transition-transform"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100">MySQL / PHP</h4>
+                  <span class="text-[10px] text-slate-500 dark:text-slate-400">Backend Dasar</span>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 hover:border-brand-500 dark:hover:border-brand-500 hover:shadow-md hover:-translate-y-1 transition-all flex items-center gap-3 cursor-default group">
+                <i class="fa-solid fa-cloud-arrow-up text-2xl text-cyan-500 group-hover:scale-110 transition-transform"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100">Vercel &amp; Git</h4>
+                  <span class="text-[10px] text-slate-500 dark:text-slate-400">Deployment</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Pro-Badge Highlights -->
+            <div class="p-4 rounded-2xl bg-brand-50/70 dark:bg-brand-950/40 border border-brand-200 dark:border-brand-800/60">
+              <div class="flex items-center gap-2 text-brand-700 dark:text-brand-300 font-bold text-sm mb-1">
+                <i class="fa-solid fa-award"></i>
+                <span>Standar Kualitas Pekerjaan</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                Setiap karya dipastikan menerapkan prinsip *mobile-first responsive*, ramah mesin pencari (SEO dasar), serta performa skor Lighthouse di atas 90.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 4. PROJECTS / PORTFOLIO SECTION ================= -->
+    <section id="projects" class="py-20 lg:py-28 bg-white/60 dark:bg-darkCard/50 border-y border-slate-200/80 dark:border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <span class="px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-brand-100 text-brand-700 dark:bg-brand-950/80 dark:text-brand-300">
+            Galeri Portofolio
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+            Karya &amp; <span class="text-gradient">Proyek Pilihan</span>
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg">
+            Eksplorasi proyek aplikasi web, rancangan antarmuka pengguna (UI/UX), dan desain prototipe yang pernah saya bangun.
+          </p>
+        </div>
+
+        <!-- Filterable Project Tabs (All, Web App, UI/UX Design, Mobile) -->
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
+          <button type="button" class="filter-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 bg-brand-600 text-white shadow-lg shadow-brand-500/25" data-filter="all">
+            Semua (All)
+          </button>
+          <button type="button" class="filter-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700" data-filter="webapp">
+            Web App
+          </button>
+          <button type="button" class="filter-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700" data-filter="uiux">
+            UI/UX Design
+          </button>
+          <button type="button" class="filter-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700" data-filter="mobile">
+            Mobile App
+          </button>
+        </div>
+
+        <!-- Project Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+          
+          <!-- PROJECT 1: Web App -->
+          <article class="project-card group rounded-2xl glass-card overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5" data-category="webapp">
+            <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" 
+                alt="EduPlatform Web App"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy">
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-brand-600/90 text-white backdrop-blur-sm shadow">
+                Web App
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                  SaaS EduPlatform
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                  Portal pembelajaran daring terintegrasi video materi, kuis otomatis, dan pelacakan progres siswa secara real-time.
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">HTML5</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Tailwind</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">PHP/MySQL</span>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <button type="button" class="btn-open-modal text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1" data-project-id="1">
+                    Detail Fitur <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </button>
+                  <div class="flex items-center gap-2">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white" title="Source Code">
+                      <i class="fa-brands fa-github text-base"></i>
+                    </a>
+                    <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400" title="Live Preview">
+                      <i class="fa-solid fa-arrow-up-right-from-square text-base"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 2: UI/UX Design -->
+          <article class="project-card group rounded-2xl glass-card overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5" data-category="uiux">
+            <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+              <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80" 
+                alt="Finansia UI Kit"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy">
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-purple-600/90 text-white backdrop-blur-sm shadow">
+                UI/UX Design
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                  Finansia Mobile Banking
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                  Desain prototipe dompet digital modern dengan alur transfer instan, visualisasi analitik anggaran, dan sistem keamanan biometrik.
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Figma</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Design System</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Prototyping</span>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <button type="button" class="btn-open-modal text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1" data-project-id="2">
+                    Detail Fitur <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </button>
+                  <div class="flex items-center gap-2">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white" title="Source Code">
+                      <i class="fa-brands fa-github text-base"></i>
+                    </a>
+                    <a href="https://figma.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400" title="Figma Prototype">
+                      <i class="fa-solid fa-arrow-up-right-from-square text-base"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 3: Web App -->
+          <article class="project-card group rounded-2xl glass-card overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5" data-category="webapp">
+            <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+              <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80" 
+                alt="EcoMarket Toko Online"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy">
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-brand-600/90 text-white backdrop-blur-sm shadow">
+                Web App
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                  EcoMarket E-Commerce
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                  Katalog toko daring produk ramah lingkungan dengan keranjang belanja interaktif dan integrasi pesanan via WhatsApp.
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">HTML5</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Tailwind CSS</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">JavaScript ES6</span>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <button type="button" class="btn-open-modal text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1" data-project-id="3">
+                    Detail Fitur <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </button>
+                  <div class="flex items-center gap-2">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white" title="Source Code">
+                      <i class="fa-brands fa-github text-base"></i>
+                    </a>
+                    <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400" title="Live Preview">
+                      <i class="fa-solid fa-arrow-up-right-from-square text-base"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 4: Mobile App -->
+          <article class="project-card group rounded-2xl glass-card overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5" data-category="mobile">
+            <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+              <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80" 
+                alt="FitPulse Mobile App"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy">
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-emerald-600/90 text-white backdrop-blur-sm shadow">
+                Mobile
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                  FitPulse Health &amp; Workout
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                  Aplikasi pelacak kebugaran jasmani, log kalori harian, serta timer interval cerdas untuk mendukung gaya hidup sehat.
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">React Native</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Redux</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">REST API</span>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <button type="button" class="btn-open-modal text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1" data-project-id="4">
+                    Detail Fitur <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </button>
+                  <div class="flex items-center gap-2">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white" title="Source Code">
+                      <i class="fa-brands fa-github text-base"></i>
+                    </a>
+                    <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400" title="Live Preview">
+                      <i class="fa-solid fa-arrow-up-right-from-square text-base"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 5: Web App -->
+          <article class="project-card group rounded-2xl glass-card overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5" data-category="webapp">
+            <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" 
+                alt="NexaFlow Productivity"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy">
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-brand-600/90 text-white backdrop-blur-sm shadow">
+                Web App
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                  NexaFlow Kanban Board
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                  Alat manajemen tugas tim dengan interaksi papan drag-and-drop mulus, filter prioritas, dan mode fokus timer terpasang.
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">HTML5</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Tailwind CSS</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Drag &amp; Drop API</span>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <button type="button" class="btn-open-modal text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1" data-project-id="5">
+                    Detail Fitur <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </button>
+                  <div class="flex items-center gap-2">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white" title="Source Code">
+                      <i class="fa-brands fa-github text-base"></i>
+                    </a>
+                    <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400" title="Live Preview">
+                      <i class="fa-solid fa-arrow-up-right-from-square text-base"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 6: UI/UX Design -->
+          <article class="project-card group rounded-2xl glass-card overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5" data-category="uiux">
+            <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+              <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" 
+                alt="KopiKita Brand Design"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy">
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-purple-600/90 text-white backdrop-blur-sm shadow">
+                UI/UX Design
+              </div>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                  KopiKita Brand &amp; Web UI
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                  Perancangan identitas visual cafe estetis, katalog menu minuman interaktif, dan alur reservasi meja secara online.
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Figma</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Wireframing</span>
+                  <span class="px-2 py-0.5 text-[11px] font-medium rounded-md bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">Color Palette</span>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <button type="button" class="btn-open-modal text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1" data-project-id="6">
+                    Detail Fitur <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </button>
+                  <div class="flex items-center gap-2">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white" title="Source Code">
+                      <i class="fa-brands fa-github text-base"></i>
+                    </a>
+                    <a href="https://figma.com" target="_blank" rel="noopener noreferrer" class="p-2 text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400" title="Figma Prototype">
+                      <i class="fa-solid fa-arrow-up-right-from-square text-base"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 5. CONTACT FORM & INFO SECTION ================= -->
+    <section id="contact" class="py-20 lg:py-28 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span class="px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300">
+            Mari Terhubung &amp; Berkolaborasi
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+            Kontak <span class="text-gradient">&amp; Kirim Pesan</span>
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg">
+            Punya ide proyek menarik, tawaran pekerjaan, magang, atau sekadar ingin berdiskusi santai? Pintu komunikasi saya selalu terbuka.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Contact Details (Left Column) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="p-8 rounded-3xl glass-card shadow-sm space-y-6">
+              <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+                Informasi Kontak Langsung
+              </h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                Anda dapat mengirim pesan melalui formulir di samping atau langsung menghubungi saya melalui saluran berikut:
+              </p>
+
+              <div class="space-y-4">
+                
+                <!-- Email Item -->
+                <a href="mailto:khamidatulkhusna24@gmail.com" class="p-4 rounded-2xl bg-white/70 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 hover:border-brand-500 dark:hover:border-brand-500 transition-all flex items-center gap-4 group shadow-sm">
+                  <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                    <i class="fa-regular fa-envelope"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs uppercase text-slate-400 font-bold">Email Utama</span>
+                    <p class="text-sm font-semibold text-slate-800 dark:text-slate-100 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                      khamidatulkhusna24@gmail.com
+                    </p>
+                  </div>
+                </a>
+
+                <!-- WhatsApp Item -->
+                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl bg-white/70 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 hover:border-emerald-500 dark:hover:border-emerald-500 transition-all flex items-center gap-4 group shadow-sm">
+                  <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs uppercase text-slate-400 font-bold">WhatsApp / Chat Cepat</span>
+                    <p class="text-sm font-semibold text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                      +62 812-3456-7890
+                    </p>
+                  </div>
+                </a>
+
+                <!-- Location Item -->
+                <div class="p-4 rounded-2xl bg-white/70 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 flex items-center gap-4 shadow-sm">
+                  <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs uppercase text-slate-400 font-bold">Lokasi Domisili</span>
+                    <p class="text-sm font-semibold text-slate-800 dark:text-slate-100">
+                      Indonesia (Buka untuk Remote Work)
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Social Links Box -->
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+                <span class="text-xs uppercase text-slate-400 font-bold block mb-3">Jejaring Media Sosial:</span>
+                <div class="flex items-center gap-3">
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 transition-all flex items-center justify-center" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 transition-all flex items-center justify-center" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 transition-all flex items-center justify-center" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 transition-all flex items-center justify-center" aria-label="Twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Contact Form (Right Column) -->
+          <div class="lg:col-span-7">
+            <div class="p-8 sm:p-10 rounded-3xl glass-card shadow-sm space-y-6">
+              <div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white">
+                  Kirimkan Pesan Langsung
+                </h3>
+                <p class="text-slate-600 dark:text-slate-300 text-sm mt-1">
+                  Respon pesan biasanya dikirimkan dalam kurun waktu 1x24 jam kerja.
+                </p>
+              </div>
+
+              <form id="contact-form" class="space-y-5" novalidate>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <!-- Name Field -->
+                  <div class="space-y-1.5">
+                    <label for="contact-name" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Nama Lengkap <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative">
+                      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                        <i class="fa-regular fa-user"></i>
+                      </div>
+                      <input type="text" id="contact-name" name="name" 
+                        placeholder="Masukkan nama Anda"
+                        class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-800 dark:text-slate-100 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
+                        required>
+                    </div>
+                    <span class="text-xs text-red-500 font-medium block h-4" id="contact-name-error"></span>
+                  </div>
+
+                  <!-- Email Field -->
+                  <div class="space-y-1.5">
+                    <label for="contact-email" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Alamat Email <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative">
+                      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                        <i class="fa-regular fa-envelope"></i>
+                      </div>
+                      <input type="email" id="contact-email" name="email" 
+                        placeholder="contoh: nama@email.com"
+                        class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-800 dark:text-slate-100 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
+                        required>
+                    </div>
+                    <span class="text-xs text-red-500 font-medium block h-4" id="contact-email-error"></span>
+                  </div>
+                </div>
+
+                <!-- Subject Field -->
+                <div class="space-y-1.5">
+                  <label for="contact-subject" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                    Subjek Diskusi <span class="text-red-500">*</span>
+                  </label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                      <i class="fa-solid fa-tag"></i>
+                    </div>
+                    <input type="text" id="contact-subject" name="subject" 
+                      placeholder="Peluang Kerja / Proyek Freelance / Diskusi"
+                      class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-800 dark:text-slate-100 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
+                      required>
+                  </div>
+                  <span class="text-xs text-red-500 font-medium block h-4" id="contact-subject-error"></span>
+                </div>
+
+                <!-- Message Field -->
+                <div class="space-y-1.5">
+                  <label for="contact-message" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                    Isi Pesan <span class="text-red-500">*</span>
+                  </label>
+                  <div class="relative">
+                    <div class="absolute top-3.5 left-3.5 pointer-events-none text-slate-400">
+                      <i class="fa-regular fa-comment-dots"></i>
+                    </div>
+                    <textarea id="contact-message" name="message" rows="4"
+                      placeholder="Tuliskan ide proyek, penawaran, atau pertanyaan Anda di sini..."
+                      class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-800/80 text-slate-800 dark:text-slate-100 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
+                      required></textarea>
+                  </div>
+                  <span class="text-xs text-red-500 font-medium block h-4" id="contact-message-error"></span>
+                </div>
+
+                <!-- Submit Button with Simulated Loading State -->
+                <button type="submit" id="btn-submit-contact"
+                  class="w-full py-4 px-6 rounded-xl font-bold text-sm sm:text-base text-white bg-brand-600 hover:bg-brand-700 shadow-lg shadow-brand-500/25 transition-all hover:scale-[1.01] active:scale-98 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed">
+                  <i class="fa-solid fa-spinner text-base animate-spin-custom hidden" id="btn-submit-spinner"></i>
+                  <span id="btn-submit-text">Kirimkan Pesan Sekarang</span>
+                </button>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-white dark:bg-darkCard border-t border-slate-200 dark:border-slate-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <span class="w-9 h-9 rounded-lg bg-brand-600 text-white flex items-center justify-center font-mono text-base">&lt;/&gt;</span>
+        <div>
+          <span class="font-extrabold text-slate-900 dark:text-white text-base">Khamidatul Khusna</span>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Frontend Web Developer &amp; UI/UX Designer</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-600 dark:text-slate-300">
+        <a href="#hero" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Beranda</a>
+        <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Tentang</a>
+        <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Keahlian</a>
+        <a href="#projects" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Portofolio</a>
+        <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Kontak</a>
+      </div>
+
+      <div class="text-xs text-slate-500 dark:text-slate-400 text-center md:text-right">
+        &copy; 2026 <strong>Khamidatul Khusna</strong>. Dibuat dengan HTML, Tailwind CSS, &amp; JS.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= FLOATING BACK TO TOP BUTTON ================= -->
+  <button type="button" id="back-to-top" 
+    class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-brand-600 hover:bg-brand-700 text-white shadow-xl shadow-brand-500/30 flex items-center justify-center z-40 opacity-0 pointer-events-none translate-y-4 transition-all duration-300 focus:outline-none hover:scale-110 active:scale-95"
+    aria-label="Kembali ke atas halaman">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ================= PROJECT DETAIL MODAL INTERAKTIF ================= -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <!-- Backdrop Blur -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity"></div>
+
+    <!-- Modal Box Content -->
+    <div class="relative w-full max-w-2xl bg-white dark:bg-darkCard rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden z-10 modal-animate my-8">
+      
+      <!-- Modal Image Container -->
+      <div class="relative aspect-video w-full bg-slate-100 dark:bg-slate-800">
+        <img id="modal-img" src="" alt="Pratinjau Proyek" class="w-full h-full object-cover">
+        <button type="button" id="close-modal-btn" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white flex items-center justify-center transition-colors" aria-label="Tutup modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <span id="modal-category" class="absolute bottom-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-brand-600 text-white shadow">
+          Kategori
+        </span>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 sm:p-8 space-y-6">
+        <div>
+          <h3 id="modal-title" class="text-2xl font-extrabold text-slate-900 dark:text-white">
+            Judul Proyek
+          </h3>
+          <p id="modal-desc" class="text-slate-600 dark:text-slate-300 text-sm sm:text-base mt-2 leading-relaxed">
+            Deskripsi lengkap tentang proyek dan solusi masalah yang dihadirkan.
+          </p>
+        </div>
+
+        <!-- Highlights Checklist -->
+        <div>
+          <h4 class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-3">Fitur Utama &amp; Nilai Tambah:</h4>
+          <ul id="modal-highlights" class="space-y-2">
+            <!-- Diisi secara dinamis via JS -->
+          </ul>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div>
+          <h4 class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-2">Stack Teknologi:</h4>
+          <div id="modal-stack" class="flex flex-wrap gap-2">
+            <!-- Diisi secara dinamis via JS -->
+          </div>
+        </div>
+
+        <!-- Action Links in Modal -->
+        <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-end gap-3">
+          <a id="modal-github-btn" href="#" target="_blank" rel="noopener noreferrer" 
+            class="px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
+            <i class="fa-brands fa-github text-sm"></i> Repositori GitHub
+          </a>
+          <a id="modal-demo-btn" href="#" target="_blank" rel="noopener noreferrer" 
+            class="px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-500/20 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Buka Live Demo
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= SUCCESS FEEDBACK MODAL OVERLAY ================= -->
+  <div id="contact-success-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <!-- Modal Backdrop -->
+    <div id="success-modal-backdrop" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity"></div>
+
+    <!-- Modal Box -->
+    <div class="relative w-full max-w-md bg-white dark:bg-darkCard rounded-3xl p-8 text-center shadow-2xl border border-slate-200 dark:border-slate-700 z-10 modal-animate space-y-5">
+      
+      <!-- Green Checkmark Animated Circle -->
+      <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-2xl shadow-inner">
+        <svg class="w-8 h-8 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12" class="checkmark-path"></polyline>
+        </svg>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">
+          Pesan Berhasil Terkirim!
+        </h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Terima kasih telah menghubungi saya. Pesan Anda telah diterima dan saya akan membalasnya sesegera mungkin dalam 1x24 jam.
+        </p>
+      </div>
+
+      <div class="pt-2">
+        <button type="button" id="btn-close-success"
+          class="w-full py-3 px-6 rounded-xl font-bold text-sm text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-500/20 transition-all hover:scale-[1.02] active:scale-98">
+          Tutup &amp; Lanjutkan Eksplorasi
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Custom JavaScript File -->
   <script src="script.js"></script>
 </body>
 
